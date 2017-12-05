@@ -11,7 +11,7 @@ public class LightBulbController : MonoBehaviour
     public SpriteRenderer sr;
     public Sprite lightBulbOn, lightBulbOff;
     bool closeEnough;
-    public GameObject pointlight;
+    public GameObject lightSource;
     void Update()
     {
         closeEnough = false;
@@ -33,11 +33,11 @@ public class LightBulbController : MonoBehaviour
         sr.sprite = lightOn ? lightBulbOn : lightBulbOff;
         if (lightOn)
         {
-            pointlight.SetActive(true);
+            lightSource.SetActive(true);
         }
         else
         {
-            pointlight.SetActive(false);
+            lightSource.SetActive(false);
         }
     }
 }
