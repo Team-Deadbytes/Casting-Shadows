@@ -20,6 +20,7 @@ ExportedObj/
 *.user
 *.unityproj
 *.booproj
+.vs*
 
 # ============ #
 # OS generated #
@@ -32,3 +33,5 @@ ExportedObj/
 Icon?
 ehthumbs.db
 Thumbs.db
+
+*.ide
