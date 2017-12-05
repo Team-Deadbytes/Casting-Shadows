@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TableLightController : MonoBehaviour
 {
-    private SpriteRenderer renderer;
+    private SpriteRenderer sr;
     public Sprite[] sprites;
 
     [SerializeField]
@@ -13,9 +13,9 @@ public class TableLightController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        renderer = gameObject.GetComponent<SpriteRenderer>();
+        sr = gameObject.GetComponent<SpriteRenderer>();
         if (state)
-            renderer.sprite = sprites[state ? 1 : 0];
+            sr.sprite = sprites[state ? 1 : 0];
     }
 
     // Update is called once per frame
