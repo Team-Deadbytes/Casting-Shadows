@@ -5,13 +5,11 @@ using UnityEngine;
 public class DoorController : MonoBehaviour
 {
 	public bool isOpen;
-	public float detectionRange;
-	public GameObject player;
 
-	public void Update()
+	public void OnTriggerStay2D(Collider2D other)
 	{
-		if (Vector3.Distance(player.transform.position, transform.position) <= detectionRange)
-			if (Input.GetKeyUp(KeyCode.E))
+		if (other.gameObject.tag == "Player")
+			if (Input.GetKeyDown(KeyCode.E))
 				toggleDoor();
 	}
 
