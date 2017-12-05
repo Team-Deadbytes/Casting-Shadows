@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class ChangeScene: MonoBehaviour {
+public class ChangeScene : MonoBehaviour
+{
 
-    public void ChangeToScene (string SceneToChange)
+    public void ChangeToScene(string SceneToChange)
     {
         SceneManager.LoadScene(SceneToChange);
     }
