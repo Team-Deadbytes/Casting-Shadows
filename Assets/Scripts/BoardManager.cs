@@ -5,9 +5,10 @@ using UnityEngine;
 
 using Random = UnityEngine.Random;
 
-public class BoardManager : MonoBehaviour {
+public class BoardManager : MonoBehaviour
+{
     public int level;   // Begins at 0, then next floor = 1, and next floor = 2 etc...
-    
+
     public GameObject player;
     public Level[] levels;
 
@@ -27,7 +28,8 @@ public class BoardManager : MonoBehaviour {
     }
 
     // Update is called once per frame
-	void Update () {
-		
-	}
+    void Update()
+    {
+
+    }
 }

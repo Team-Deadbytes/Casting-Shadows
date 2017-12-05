@@ -5,7 +5,8 @@ using UnityEngine;
 
 using Random = UnityEngine.Random;
 
-public class Level : MonoBehaviour {
+public class Level : MonoBehaviour
+{
     [Serializable]
     public class Count
     {
@@ -36,7 +37,7 @@ public class Level : MonoBehaviour {
 
     void AddEntry(int type, int x, int y)
     {
-        if(type == 0)
+        if (type == 0)
         {
             if (!setup)
             {
@@ -55,7 +56,7 @@ public class Level : MonoBehaviour {
         setup = false;
         for (int numDot = 0; numDot < 2; numDot++)
         {
-            if(numDot == 1)
+            if (numDot == 1)
             {
                 wallTilesLoc = new Vector3[offset];
                 setup = true;
@@ -98,7 +99,7 @@ public class Level : MonoBehaviour {
             {
                 for (int y = 5; y < 11; y++)
                 {
-                     AddEntry(0, x, y);
+                    AddEntry(0, x, y);
                 }
             }
             for (int x = -10; x < -7; x++)
@@ -178,7 +179,7 @@ public class Level : MonoBehaviour {
             AddEntry(0, 11, 12);
             AddEntry(0, 11, 11);
         }
-        
+
         for (int i = 0; i < wallTilesLoc.Length; i++)
         {
             GameObject toInstantiate = floorTiles[Random.Range(0, floorTiles.Length)];
@@ -194,12 +195,14 @@ public class Level : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 }
