@@ -572,9 +572,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target:
+  - {fileID: 25902426}
   - {fileID: 1859152698}
   - {fileID: 1964315392}
-  - {fileID: 25902426}
   speed: 1
 --- !u!1 &1859152697
 GameObject:

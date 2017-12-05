@@ -9,7 +9,7 @@ public class AI_Ghost : MonoBehaviour {
     private int currTarget;
     // Use this for initialization
     void Start () {
-        currTarget = 0;
+        currTarget = 1;
 	}
 	
 	// Update is called once per frame
@@ -22,20 +22,15 @@ public class AI_Ghost : MonoBehaviour {
     {
         if (other.gameObject.tag == "Player")
         {
-            if (currTarget < (target.Length - 1))
-                currTarget = currTarget += 1;
-            else
-            {
-                currTarget = 0;
-            }
+            currTarget = 0;
         }
-        else if (currTarget < target.Length)
+        else if (currTarget < target.Length - 1)
         {
             currTarget += 1;
         }
         else
         {
-            currTarget = 0;
+            currTarget = 1;
         }
     }
 
@@ -43,9 +38,9 @@ public class AI_Ghost : MonoBehaviour {
     {
         if(collision.gameObject.tag == "Player")
         {
-            if (currTarget < target.Length)
+            if (currTarget < target.Length - 1)
             {
-                currTarget = 0;
+                currTarget = 1;
             }
         }
     }
