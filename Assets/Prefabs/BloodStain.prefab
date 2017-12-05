@@ -69,6 +69,7 @@ MonoBehaviour:
   - {fileID: 21300026, guid: 9f65e494496f8bf448f1ac6cf1b4da13, type: 3}
   - {fileID: 21300028, guid: 9f65e494496f8bf448f1ac6cf1b4da13, type: 3}
   - {fileID: 21300030, guid: 9f65e494496f8bf448f1ac6cf1b4da13, type: 3}
+  keepDefault: 1
 --- !u!212 &212714318569545482
 SpriteRenderer:
   m_ObjectHideFlags: 1
