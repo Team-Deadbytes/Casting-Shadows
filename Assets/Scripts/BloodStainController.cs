@@ -4,8 +4,9 @@ using UnityEngine;
 
 using Random = UnityEngine.Random;
 
-public class BloodStainController : MonoBehaviour {
-    private SpriteRenderer renderer;
+public class BloodStainController : MonoBehaviour
+{
+    private SpriteRenderer sr;
 
     [SerializeField]
     public Sprite[] sprites;
@@ -17,18 +18,19 @@ public class BloodStainController : MonoBehaviour {
         keepDefault = false;
     }
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start()
     {
         if (!keepDefault)
         {
-            renderer = gameObject.GetComponent<SpriteRenderer>();
-            renderer.sprite = sprites[Random.Range(0, sprites.Length)];
+            sr = gameObject.GetComponent<SpriteRenderer>();
+            sr.sprite = sprites[Random.Range(0, sprites.Length)];
         }
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 }
