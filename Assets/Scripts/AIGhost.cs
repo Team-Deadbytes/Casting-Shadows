@@ -7,10 +7,15 @@ public class AIGhost : MonoBehaviour
     public Transform[] target;
     public float speed;
     private int currTarget;
+    private GameObject playerObject;
+    SanitySystem sanitySystem;
     // Use this for initialization
     void Start()
     {
         currTarget = 1;
+        playerObject = GameObject.Find("Player");
+        if(playerObject != null)
+            sanitySystem = playerObject.GetComponent <SanitySystem>();
     }
 
     // Update is called once per frame
@@ -18,6 +23,10 @@ public class AIGhost : MonoBehaviour
     {
         float step = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, target[currTarget].position, step);
+        if(currTarget == 0 && playerObject != null)
+        {
+            sanitySystem.sanity -= 3.0f * Time.deltaTime;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
