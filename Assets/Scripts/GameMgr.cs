@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameMgr : MonoBehaviour {
     public BoardManager boardScript;
-
+    
     void Awake()
     {
         DontDestroyOnLoad(transform.gameObject);
