@@ -5,7 +5,7 @@ using UnityEngine;
 public class LightBulbController : MonoBehaviour
 {
 
-    public bool lightOn = false;
+    public bool lightOn;
     public float detectionRange;
     public GameObject player;
     public SpriteRenderer sr;
