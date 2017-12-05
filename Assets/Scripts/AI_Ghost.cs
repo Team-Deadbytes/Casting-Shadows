@@ -2,18 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AI_Ghost : MonoBehaviour {
-
+public class AI_Ghost : MonoBehaviour
+{
     public Transform[] target;
     public float speed;
     private int currTarget;
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
         currTarget = 1;
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
         float step = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, target[currTarget].position, step);
     }
