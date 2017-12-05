@@ -2,19 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AI_Ghost : MonoBehaviour
+public class AIGhost : MonoBehaviour
 {
     public Transform[] target;
     public float speed;
     private int currTarget;
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         currTarget = 1;
-	}
-	
-	// Update is called once per frame
-	void Update ()
+    }
+
+    // Update is called once per frame
+    void Update()
     {
         float step = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, target[currTarget].position, step);
@@ -38,7 +38,7 @@ public class AI_Ghost : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             if (currTarget < target.Length - 1)
             {
@@ -49,7 +49,7 @@ public class AI_Ghost : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             Destroy(collision.gameObject);
         }
