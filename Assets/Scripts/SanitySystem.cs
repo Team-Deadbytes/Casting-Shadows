@@ -65,7 +65,10 @@ public class SanitySystem : MonoBehaviour
     {
         if (collision.tag == "Light")
         {
-            inSafeZone.Pop();
+            if (inSafeZone.Count > 0)
+            {
+                inSafeZone.Pop();
+            }
         }
     }
 
