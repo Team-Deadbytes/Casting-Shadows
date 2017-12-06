@@ -6,9 +6,14 @@ public class AIGhost : MonoBehaviour
 {
     public Transform[] target;
     public float speed;
-    private int currTarget;
+    public int currTarget;
+    private Collider2D prevCollider;
     private GameObject playerObject;
-    SanitySystem sanitySystem;
+    private GameObject doorObject;
+
+    private SanitySystem sanitySystem;
+    private DoorController doorController;
+
     // Use this for initialization
     void Start()
     {
@@ -27,21 +32,33 @@ public class AIGhost : MonoBehaviour
         {
             sanitySystem.sanity -= 3.0f * Time.deltaTime;
         }
+        if(currTarget == 1)
+        {
+            sanitySystem.isSeen(true);
+        }
+        else
+        {
+            sanitySystem.isSeen(false);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
+        if (prevCollider == null || prevCollider.gameObject.name != other.gameObject.name)
         {
-            currTarget = 0;
-        }
-        else if (currTarget < target.Length - 1)
-        {
-            currTarget += 1;
-        }
-        else
-        {
-            currTarget = 1;
+            prevCollider = other;
+            if (other.gameObject.tag == "Player")
+            {
+                currTarget = 0;
+            }
+            else if (currTarget < target.Length - 1 && other.gameObject.tag == "Waypoint")
+            {
+                StartCoroutine(Wait());
+            }
+            else if(other.gameObject.tag != "Objects")
+            {
+                currTarget = 1;
+            }
         }
     }
 
@@ -62,5 +79,27 @@ public class AIGhost : MonoBehaviour
         {
             Destroy(collision.gameObject);
         }
+        if (collision.gameObject.name == "WoodenDoor")
+        {
+            doorObject = collision.gameObject;
+            doorController = doorObject.GetComponent<DoorController>();
+            if(!doorController.isOpen)
+            {
+                doorController.toggleDoor();
+            }
+        }
+    }
+
+    IEnumerator Wait()
+    {
+        //print(Time.time);
+        yield return new WaitForSecondsRealtime(Random.Range(0, 4));
+        if (currTarget < target.Length - 1)
+        {
+            currTarget += 1;
+        }
+        else
+            currTarget = 1;
+        //print(Time.time);
     }
 }
