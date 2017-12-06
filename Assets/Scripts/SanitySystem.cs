@@ -24,30 +24,22 @@ public class SanitySystem : MonoBehaviour
         if (!IsSafe() && sanity > 0.0f)
         {
             if(seen)    // If seen we increase the rate of sanity loss
-            {
                 sanity -= 2.5f * Time.deltaTime;
-            } else
-            {
+            else
                 sanity -= 1.5f * Time.deltaTime;
-            }
+
             if(sanity < 0.0f)
-            {
                 sanity = 0.0f;
-            }
         }
         else if (IsSafe() && sanity < 20.0f)
         {
             if(seen)    // If seen we reduce the rate of sanity gain
-            {
                 sanity += 1.5f * Time.deltaTime;
-            } else
-            {
+            else
                 sanity += 2.5f * Time.deltaTime;
-            }
+
             if(sanity > 20.0f)
-            {
                 sanity = 20.0f;
-            }
         }
     }
 
@@ -63,21 +55,15 @@ public class SanitySystem : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Light")
-        {
-            inSafeZone.Pop();
-        }
+        if (collision.tag == "Light" && inSafeZone.Count > 0)
+                inSafeZone.Pop();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(selfLight)
-        {
             selfLight = false;
-        }
         else if (collision.tag == "Light")
-        {
             inSafeZone.Push(true);
-        }
     }
 }
