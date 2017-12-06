@@ -177,6 +177,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openSound: {fileID: 8300000, guid: c21fa22da4c9241d3aa1bd50e667b77d, type: 3}
   closeSound: {fileID: 8300000, guid: f35311d9f54424b50bfae30761aa9cdc, type: 3}
+  isOpen: 0
+  isInteractable: 1
 --- !u!212 &212805039493070512
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -191,7 +193,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 15c57ff9cbc259942b5d066753fcadff, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
