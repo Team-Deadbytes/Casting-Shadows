@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Objects
   - Light
+  - Waypoint
   layers:
   - Default
   - TransparentFX
