@@ -51,11 +51,11 @@ public class AIGhost : MonoBehaviour
             {
                 currTarget = 0;
             }
-            else if (currTarget < target.Length - 1 && other.gameObject.tag == "Waypoint")
+            else if (other.gameObject.tag == "Waypoint" && other.gameObject == target[currTarget].gameObject)
             {
                 StartCoroutine(Wait());
             }
-            else if(other.gameObject.tag != "Objects")
+            else if (other.gameObject.tag != "Objects" && other.gameObject.tag != "Waypoint")
             {
                 currTarget = 1;
             }
@@ -79,7 +79,7 @@ public class AIGhost : MonoBehaviour
         {
             Destroy(collision.gameObject);
         }
-        if (collision.gameObject.name == "WoodenDoor")
+        if (collision.gameObject.name.StartsWith("WoodenDoor"))
         {
             doorObject = collision.gameObject;
             doorController = doorObject.GetComponent<DoorController>();
