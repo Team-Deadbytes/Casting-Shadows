@@ -10,6 +10,7 @@ public class DoorController : MonoBehaviour
 	public AudioClip openSound;
 	public AudioClip closeSound;
 	public bool isOpen;
+	public bool isInteractable;
 
 	private AudioSource audioSource;
 	private string proximityMessage = OPEN_MESSAGE;
@@ -22,21 +23,24 @@ public class DoorController : MonoBehaviour
 
 	public void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.tag == "Player" && other.isTrigger == false)
-			showProximityMessage = true;
+		if (isInteractable)
+			if (other.tag == "Player" && other.isTrigger == false)
+				showProximityMessage = true;
 	}
 
 	public void OnTriggerStay2D(Collider2D other)
 	{
-		if (other.tag == "Player" && other.isTrigger == false)
-			if (Input.GetKeyDown(KeyCode.E))
-				toggleDoor();
+		if (isInteractable)
+			if (other.tag == "Player" && other.isTrigger == false)
+				if (Input.GetKeyDown(KeyCode.E))
+					toggleDoor();
 	}
 
 	public void OnTriggerExit2D(Collider2D other)
 	{
-		if (other.tag == "Player" && other.isTrigger == false)
-			showProximityMessage = false;
+		if (isInteractable)
+			if (other.tag == "Player" && other.isTrigger == false)
+				showProximityMessage = false;
 	}
 
 	public void toggleDoor()
