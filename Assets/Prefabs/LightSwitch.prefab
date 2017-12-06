@@ -9,73 +9,74 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1033902149190572}
+  m_RootGameObject: {fileID: 1850903671597396}
   m_IsPrefabParent: 1
---- !u!1 &1033902149190572
+--- !u!1 &1850903671597396
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4073930609546640}
-  - component: {fileID: 212714318569545482}
-  - component: {fileID: 114901842371523082}
+  - component: {fileID: 4336506687846266}
+  - component: {fileID: 114518176544277276}
+  - component: {fileID: 212422783975672904}
+  - component: {fileID: 58324656451528574}
   m_Layer: 0
-  m_Name: BloodStain
+  m_Name: LightSwitch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4073930609546640
+--- !u!4 &4336506687846266
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1033902149190572}
+  m_GameObject: {fileID: 1850903671597396}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.1956623, y: 3.6539364, z: -0.040270023}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114901842371523082
+--- !u!58 &58324656451528574
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1850903671597396}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.35
+--- !u!114 &114518176544277276
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1033902149190572}
+  m_GameObject: {fileID: 1850903671597396}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d1873046985ee14fa0e919e370f2ad1, type: 3}
+  m_Script: {fileID: 11500000, guid: a8bd29c94517a27479054ffd0f869af4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprites:
-  - {fileID: 21300000, guid: 9f65e494496f8bf448f1ac6cf1b4da13, type: 3}
-  - {fileID: 21300002, guid: 9f65e494496f8bf448f1ac6cf1b4da13, type: 3}
-  - {fileID: 21300004, guid: 9f65e494496f8bf448f1ac6cf1b4da13, type: 3}
-  - {fileID: 21300006, guid: 9f65e494496f8bf448f1ac6cf1b4da13, type: 3}
-  - {fileID: 21300008, guid: 9f65e494496f8bf448f1ac6cf1b4da13, type: 3}
-  - {fileID: 21300010, guid: 9f65e494496f8bf448f1ac6cf1b4da13, type: 3}
-  - {fileID: 21300012, guid: 9f65e494496f8bf448f1ac6cf1b4da13, type: 3}
-  - {fileID: 21300014, guid: 9f65e494496f8bf448f1ac6cf1b4da13, type: 3}
-  - {fileID: 21300016, guid: 9f65e494496f8bf448f1ac6cf1b4da13, type: 3}
-  - {fileID: 21300018, guid: 9f65e494496f8bf448f1ac6cf1b4da13, type: 3}
-  - {fileID: 21300020, guid: 9f65e494496f8bf448f1ac6cf1b4da13, type: 3}
-  - {fileID: 21300022, guid: 9f65e494496f8bf448f1ac6cf1b4da13, type: 3}
-  - {fileID: 21300024, guid: 9f65e494496f8bf448f1ac6cf1b4da13, type: 3}
-  - {fileID: 21300026, guid: 9f65e494496f8bf448f1ac6cf1b4da13, type: 3}
-  - {fileID: 21300028, guid: 9f65e494496f8bf448f1ac6cf1b4da13, type: 3}
-  - {fileID: 21300030, guid: 9f65e494496f8bf448f1ac6cf1b4da13, type: 3}
-  keepDefault: 1
---- !u!212 &212714318569545482
+  isOn: 0
+  onSprite: {fileID: 21300038, guid: 446001d0de6425e43bb470ff371a126f, type: 3}
+  offSprite: {fileID: 21300040, guid: 446001d0de6425e43bb470ff371a126f, type: 3}
+--- !u!212 &212422783975672904
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1033902149190572}
+  m_GameObject: {fileID: 1850903671597396}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -104,12 +105,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9f65e494496f8bf448f1ac6cf1b4da13, type: 3}
+  m_Sprite: {fileID: 21300040, guid: 446001d0de6425e43bb470ff371a126f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.32, y: 0.32}
+  m_Size: {x: 0.1, y: 0.05}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

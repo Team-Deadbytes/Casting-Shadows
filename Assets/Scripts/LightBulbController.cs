@@ -15,8 +15,9 @@ public class LightBulbController : MonoBehaviour
     void Update()
     {
         closeEnough = false;
-        if (Vector3.Distance(player.transform.position, transform.position) <= detectionRange)
-            closeEnough = true;
+        if (player)
+            if (Vector3.Distance(player.transform.position, transform.position) <= detectionRange)
+                closeEnough = true;
         if (Input.GetKeyUp(KeyCode.E) && closeEnough)
             toggleLight();
     }
