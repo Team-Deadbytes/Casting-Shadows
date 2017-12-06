@@ -9,11 +9,11 @@ public class DoorController : MonoBehaviour
 
 	public AudioClip openSound;
 	public AudioClip closeSound;
+	public bool isOpen;
 
 	private AudioSource audioSource;
 	private string proximityMessage = OPEN_MESSAGE;
 	private bool showProximityMessage;
-	private bool isOpen;
 
 	public void Start()
 	{
@@ -22,24 +22,24 @@ public class DoorController : MonoBehaviour
 
 	public void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.gameObject.tag == "Player")
+		if (other.tag == "Player" && other.isTrigger == false)
 			showProximityMessage = true;
 	}
 
 	public void OnTriggerStay2D(Collider2D other)
 	{
-		if (other.gameObject.tag == "Player")
+		if (other.tag == "Player" && other.isTrigger == false)
 			if (Input.GetKeyDown(KeyCode.E))
 				toggleDoor();
 	}
 
 	public void OnTriggerExit2D(Collider2D other)
 	{
-		if (other.gameObject.tag == "Player")
+		if (other.tag == "Player" && other.isTrigger == false)
 			showProximityMessage = false;
 	}
 
-	private void toggleDoor()
+	public void toggleDoor()
 	{
 		float rotationAngle = isOpen ? -90.0f : 90.0f;
 		transform.Rotate(0.0f, 0.0f, rotationAngle);
