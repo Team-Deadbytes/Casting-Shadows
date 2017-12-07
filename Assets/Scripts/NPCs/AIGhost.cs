@@ -121,7 +121,10 @@ public class AIGhost : MonoBehaviour
                     CeilingLight lightsystem = other.GetComponentInParent<CeilingLight>();
                     lightsystem.MonsterProwing(true);
 
-                    currTarget = 1;
+                    if (currTarget == lastTarget)
+                        currTarget = Random.Range(1, target.Length - 1);
+                    else
+                        currTarget = lastTarget;
                 }
             }
             else if (other.gameObject.tag == "Untagged")
