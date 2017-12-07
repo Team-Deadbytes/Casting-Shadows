@@ -81,9 +81,9 @@ public class PlayerController : MonoBehaviour
         {
             float angle = 0.0f;
             if (Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
-                angle = rotationalSpeed;
+                angle = rotationalSpeed * Time.deltaTime;
             else if (Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A))
-                angle = -1 * rotationalSpeed;
+                angle = -1 * rotationalSpeed * Time.deltaTime;
             transform.Rotate(0.0f, 0.0f, angle);
         }
 
