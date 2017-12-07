@@ -47,15 +47,26 @@ public class AIGhost : MonoBehaviour
             if (other.gameObject.tag == "Player")
                 currTarget = 0;
             else if (other.gameObject.tag == "Waypoint" && other.gameObject == target[currTarget].gameObject)
-                StartCoroutine(Wait());
-            else if (other.gameObject.tag == "Light" && other.isActiveAndEnabled)
             {
-                CeilingLight lightsystem = other.GetComponentInParent<CeilingLight>();
-                lightsystem.MonsterProwing(true);
+                StartCoroutine(Wait());
+            }
+            else if (other.gameObject.tag == "Light")
+            {
+                Light otherlit = other.gameObject.GetComponent<Light>();
+                if (otherlit.enabled)
+                {
+                    CeilingLight lightsystem = other.GetComponentInParent<CeilingLight>();
+                    lightsystem.MonsterProwing(true);
+                    
+                    currTarget = 1;
+                }
+            }
+            else if (other.gameObject.tag == "Untagged")
+                return;
+            else if (other.gameObject.tag != "Objects" && other.gameObject.tag != "Waypoint")
+            {
                 currTarget = 1;
             }
-            else if (other.gameObject.tag != "Objects" && other.gameObject.tag != "Waypoint")
-                currTarget = 1;
         }
     }
 
@@ -86,13 +97,11 @@ public class AIGhost : MonoBehaviour
             doorObject = collision.gameObject;
             doorController = doorObject.GetComponent<DoorController>();
             if(!doorController.isOpen)
-            {
                 doorController.toggleDoor();
-            }
         }
     }
 
-        IEnumerator Wait()
+    IEnumerator Wait()
     {
         //print(Time.time);
         yield return new WaitForSecondsRealtime(Random.Range(0, 4));

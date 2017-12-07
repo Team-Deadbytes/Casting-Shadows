@@ -47,6 +47,12 @@ public class CeilingLight : MonoBehaviour
         proximityMessage = GetComponent<ProximityMessage>();
         originalIntensity = lightComponent.intensity;
 
+        if(lightBulbStatus == LightBulbStatus.Missing
+            || lightBulbStatus == LightBulbStatus.Broken)
+        {
+            lightComponent.enabled = false;
+        }
+
         SetProximityMessage();
     }
 
@@ -59,6 +65,9 @@ public class CeilingLight : MonoBehaviour
 
         if ((monsterNear || monsterGracePeriod > 0.0f) && lightComponent.isActiveAndEnabled && lightComponent.intensity > 0.0f)
         {
+            monsterGracePeriod -= Time.deltaTime;
+            if (monsterGracePeriod < 0.0f)
+                monsterGracePeriod = 0.0f;
             lightComponent.intensity = lightComponent.intensity - (6.0f * Time.deltaTime);
             if (lightComponent.intensity <= 0.0f)
             {
@@ -98,7 +107,7 @@ public class CeilingLight : MonoBehaviour
     {
         monsterNear = state;
         if (!state)
-            monsterGracePeriod = 3.0f;
+            monsterGracePeriod = 1.7f;
     }
 
     private void StartAction()
