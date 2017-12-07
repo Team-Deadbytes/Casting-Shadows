@@ -2,27 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LightSwitchController : MonoBehaviour
+public class LightSwitch : MonoBehaviour
 {
+	// Proximity message fields
 	private const string ON_MESSAGE  = "Press E to flip switch on";
 	private const string OFF_MESSAGE = "Press E to flip switch off";
-
-	public bool isOn;
-	public Sprite onSprite;
-	public Sprite offSprite;
-
-	private SpriteRenderer spriteRenderer;
 	private string proximityMessage;
 	private bool showProximityMessage;
+
+	// Sprite fields
+	private SpriteRenderer spriteRenderer;
+	public Sprite OnSprite;
+	public Sprite OffSprite;
+
+	// Object fields
+	public bool IsOn;
 
 	public void Start()
 	{
 		spriteRenderer = GetComponent<SpriteRenderer>();
-
-		toggleSwitch(isOn);
-
-		spriteRenderer.sprite = isOn ? onSprite : offSprite;
-		proximityMessage = isOn ? OFF_MESSAGE : ON_MESSAGE;
+		SetSprite();
+		SetProximityMessage();
 	}
 
 	public void OnTriggerEnter2D(Collider2D other)
@@ -35,7 +35,7 @@ public class LightSwitchController : MonoBehaviour
 	{
 		if (other.tag == "Player" && other.isTrigger == false)
 			if (Input.GetKeyDown(KeyCode.E))
-				toggleSwitch(!isOn);
+				Interact();
 	}
 
 	public void OnTriggerExit2D(Collider2D other)
@@ -44,18 +44,24 @@ public class LightSwitchController : MonoBehaviour
 			showProximityMessage = false;
 	}
 
-	private void toggleSwitch(bool on)
+	private void Interact()
 	{
-		for (int i = 0; i < transform.childCount; i++)
-		{
-			GameObject childObj = transform.GetChild(i).gameObject;
-			childObj.gameObject.SetActive(on);
-		}
-		isOn = on;
+		IsOn = !IsOn;
 
 		// TODO: Play audio clicks
 
-		proximityMessage = on ? OFF_MESSAGE : ON_MESSAGE;
+		SetSprite();
+		SetProximityMessage();
+	}
+
+	private void SetProximityMessage()
+	{
+		proximityMessage = IsOn ? OFF_MESSAGE : ON_MESSAGE;		
+	}
+
+	private void SetSprite()
+	{
+		spriteRenderer.sprite = IsOn ? OnSprite : OffSprite;
 	}
 
 	private void OnGUI()
