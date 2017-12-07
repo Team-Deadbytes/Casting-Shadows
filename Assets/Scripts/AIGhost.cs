@@ -10,6 +10,7 @@ public class AIGhost : MonoBehaviour
     private Collider2D prevCollider;
     private GameObject playerObject;
     private GameObject doorObject;
+    public Canvas deathCanvas;
 
     private SanitySystem sanitySystem;
     private DoorController doorController;
@@ -77,7 +78,7 @@ public class AIGhost : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Destroy(collision.gameObject);
+            deathCanvas.gameObject.SetActive(true);
         }
         if (collision.gameObject.name.StartsWith("WoodenDoor"))
         {
