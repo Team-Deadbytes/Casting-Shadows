@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
 {
     public float speed;
     public float rotationalSpeed;
+    private SanitySystem sanitySystem;
+    private Light playerLight;
 
     AudioSource audioSource;
 
@@ -16,11 +18,17 @@ public class PlayerController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+        sanitySystem = GetComponent<SanitySystem>();
+        playerLight = GetComponentInChildren<Light>();
     }
 
     public void Update()
     {
         Move2();
+        if (sanitySystem.sanity < 10.0f)
+            speed = 1;
+        else
+            speed = 2;
     }
 
     private void Move1()
