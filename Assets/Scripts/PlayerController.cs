@@ -2,21 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class PlayerController : MonoBehaviour
 {
     public float speed;
     public float rotationalSpeed;
+    private SanitySystem sanitySystem;
+    private Light playerLight;
+
+    AudioSource audioSource;
 
     private Animator animator;
 
     public void Start()
     {
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
+        sanitySystem = GetComponent<SanitySystem>();
+        playerLight = GetComponentInChildren<Light>();
     }
 
     public void Update()
     {
         Move2();
+        if (sanitySystem.sanity < 10.0f)
+            speed = 1;
+        else
+            speed = 2;
     }
 
     private void Move1()
@@ -63,6 +75,13 @@ public class PlayerController : MonoBehaviour
                 transform.position += transform.right * speed * Time.deltaTime;
             else if (Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.W))
                 transform.position += (-1 * transform.right) * (speed / 2) * Time.deltaTime;
+            if (audioSource.isPlaying == false)
+            {
+                audioSource.volume = Random.Range(0.2f, 0.4f);
+                audioSource.pitch = Random.Range(0.9f, 1.1f);
+                audioSource.Play();
+            }
+
         }
         else
             // Stop player-walk animation
