@@ -53,13 +53,20 @@ public class SanitySystem : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Light" && collision.isActiveAndEnabled && inSafeZone > 0)
-            inSafeZone--;
+        if (collision.tag == "Light" && inSafeZone > 0)
+        {
+            Light lightcomp = collision.gameObject.GetComponent<Light>();
+            if (lightcomp.enabled)
+                inSafeZone--;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Light" && collision.isActiveAndEnabled)
-            inSafeZone++;
+        if (collision.tag == "Light") {
+            Light lightcomp = collision.gameObject.GetComponent<Light>();
+            if(lightcomp.enabled)
+                inSafeZone++;
+        }
     }
 }

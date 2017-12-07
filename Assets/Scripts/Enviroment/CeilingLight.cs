@@ -25,7 +25,8 @@ public class CeilingLight : MonoBehaviour
 	// Light fields
 	public LightBulbStatus lightBulbStatus;
 	private Light lightComponent;
-	private LightSwitch parentLightSwitch { get { return transform.parent ? transform.parent.GetComponent<LightSwitch>() : null; } }
+    public GameObject lightSource;	
+    private LightSwitch parentLightSwitch { get { return transform.parent ? transform.parent.GetComponent<LightSwitch>() : null; } }
 	private bool isConnected { get { return parentLightSwitch ? parentLightSwitch.IsOn : false; } }
 
 	// Interact fields
@@ -34,6 +35,10 @@ public class CeilingLight : MonoBehaviour
 	private float actionProgress;
 	private Vector3 playerPosition;
 
+    private bool monsterNear;
+    private float monsterGracePeriod;
+    private float originalIntensity;
+
 	private ProximityMessage proximityMessage;
 
 	public void Start()
@@ -41,20 +46,51 @@ public class CeilingLight : MonoBehaviour
 		audioSource = GetComponent<AudioSource>();
 		lightComponent = GetComponentInChildren<Light>();
 		proximityMessage = GetComponent<ProximityMessage>();
+        monsterGracePeriod = 0.0f;
+        monsterNear = false;
+        lightSource = this.gameObject.transform.GetChild(0).gameObject;
+        originalIntensity = lightComponent.intensity;
+
+        if (lightBulbStatus != LightBulbStatus.OK)
+            lightComponent.enabled = false;
+
 		SetProximityMessage();
 	}
 
 	public void Update()
-	{	
-		if (lightBulbStatus == LightBulbStatus.OK)
-			lightComponent.enabled = parentLightSwitch ? isConnected : true;
-		else
-			lightComponent.enabled = false;
-	}
+    {
+        if (lightBulbStatus == LightBulbStatus.OK)
+        {
+            lightSource.SetActive(true);
+            lightComponent.enabled = parentLightSwitch ? isConnected : true;
+        }
+        else
+        {
+            lightSource.SetActive(false);
+            lightComponent.enabled = false;
+        }
+
+        if ((monsterNear || monsterGracePeriod > 0.0f) && lightComponent.isActiveAndEnabled && lightComponent.intensity > 0.0f)
+        {
+            monsterGracePeriod -= Time.deltaTime;
+            if (monsterGracePeriod < 0.0f)
+                monsterGracePeriod = 0.0f;
+            lightComponent.intensity = lightComponent.intensity - (6.0f * Time.deltaTime);
+            if (lightComponent.intensity <= 0.0f)
+            {
+                lightComponent.intensity = originalIntensity;
+                lightComponent.enabled = false;
+                lightSource.SetActive(false);
+                lightBulbStatus = LightBulbStatus.Broken;
+                monsterNear = false;
+                monsterGracePeriod = 0.0f;
+            }
+        }
+    }
 
 	public void OnTriggerStay2D(Collider2D other)
 	{
-		if (other.tag == "Player" && other.isTrigger == false)
+		if (other.tag == "Player" && !other.isTrigger)
 		{
 			if (Input.GetKeyDown(KeyCode.E))
 			{
@@ -83,6 +119,13 @@ public class CeilingLight : MonoBehaviour
 			: removeSound;
 		audioSource.Play();
 	}
+
+	public void MonsterProwing(bool state)
+    {
+        monsterNear = state;
+        if (!state)
+            monsterGracePeriod = 1.7f;
+    }
 
 	private void ProgressAction()
 	{
