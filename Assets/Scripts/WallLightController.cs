@@ -16,7 +16,7 @@ public class WallLightController : MonoBehaviour {
     [SerializeField]
     public Sprite NotEquippedSprite, EquippedSprite, BrokenBulbSprite, BrokenGlassSprite;
     [SerializeField]
-    public GameObject light;
+    public GameObject lightSource;
     [SerializeField]
     public AudioClip shatterSound, bulbScrewSound, bulbUnscrewSound;
 
@@ -30,25 +30,25 @@ public class WallLightController : MonoBehaviour {
         switch (m)
         {
             case LightState.NotEquipped:
-                light.SetActive(false);
+                lightSource.SetActive(false);
                 powered = false;
                 audioSource.clip = bulbUnscrewSound;
                 sr.sprite = NotEquippedSprite;
                 break;
             case LightState.Equipped:
                 powered = switchState;
-                light.SetActive(powered);
+                lightSource.SetActive(powered);
                 audioSource.clip = bulbScrewSound;
                 sr.sprite = EquippedSprite;
                 break;
             case LightState.BrokenBulb:
-                light.SetActive(false);
+                lightSource.SetActive(false);
                 powered = false;
                 audioSource.clip = shatterSound;
                 sr.sprite = BrokenBulbSprite;
                 break;
             case LightState.BrokenGlass:
-                light.SetActive(false);
+                lightSource.SetActive(false);
                 powered = false;
                 audioSource.clip = shatterSound;
                 sr.sprite = BrokenGlassSprite;
@@ -64,12 +64,12 @@ public class WallLightController : MonoBehaviour {
         if (switchState && !powered && model == LightState.Equipped)
         {
             powered = true;
-            light.SetActive(true);
+            lightSource.SetActive(true);
         }
         else if(!switchState)
         {
             powered = false;
-            light.SetActive(false);
+            lightSource.SetActive(false);
         }
     }
 
@@ -137,7 +137,10 @@ public class WallLightController : MonoBehaviour {
         showProximityMessage = false;
         sr = gameObject.GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
-        SetSprite(model, false);
+        if(powered)
+            SetSprite(LightState.Equipped, false);
+        else
+            SetSprite(model, false);
     }
 
 	// Update is called once per frame
