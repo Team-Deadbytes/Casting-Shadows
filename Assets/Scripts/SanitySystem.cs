@@ -5,15 +5,13 @@ using UnityEngine;
 public class SanitySystem : MonoBehaviour
 {
     public float sanity;
-    bool selfLight;
-    private Stack<bool> inSafeZone;
+    private int inSafeZone;
     private bool seen;
 
     // Use this for initialization
     void Start()
     {
-        inSafeZone = new Stack<bool>();
-        selfLight = true;
+        inSafeZone = 0;
         sanity = 100.0f;
         seen = false;
     }
@@ -50,26 +48,18 @@ public class SanitySystem : MonoBehaviour
 
     private bool IsSafe()
     {
-        return inSafeZone.Count > 0;
+        return inSafeZone > 0;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Light" && collision.isActiveAndEnabled && inSafeZone.Count > 0)
-                inSafeZone.Pop();
-        Debug.Log("Exit: " + collision.tag + " " + inSafeZone.Count);
+        if (collision.tag == "Light" && collision.isActiveAndEnabled && inSafeZone > 0)
+            inSafeZone--;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Light")
-        {
-            /*if (selfLight)
-                selfLight = false;
-            else */
-            if (collision.isActiveAndEnabled)
-                inSafeZone.Push(true);
-        }
-        Debug.Log("Enter: " + collision.tag + " " + inSafeZone.Count);
+        if (collision.tag == "Light" && collision.isActiveAndEnabled)
+            inSafeZone++;
     }
 }

@@ -38,7 +38,7 @@ public class CeilingLight : MonoBehaviour
 	public void Start()
 	{
 		audioSource = GetComponent<AudioSource>();
-		lightComponent = GetComponent<Light>();
+		lightComponent = GetComponentInChildren<Light>();
 		SetProximityMessage();
 	}
 
