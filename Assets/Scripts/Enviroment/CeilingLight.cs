@@ -4,80 +4,101 @@ using UnityEngine;
 
 public class CeilingLight : MonoBehaviour
 {
-	public enum LightBulbStatus
-	{
-		Missing,
-		OK,
-		Broken,
-	};
+    public enum LightBulbStatus
+    {
+        Missing,
+        OK,
+        Broken,
+    };
 
-	// Proximity message fields
-	private const string MISSING_MESSAGE = "Hold E to screw in a light bulb to the ceiling light";
-	private const string OK_MESSAGE      = "Hold E to unscrew the light bulb from the ceiling light";
-	private const string BROKEN_MESSAGE  = "Hold E to unscrew the broken light bulb from the ceiling light";
+    // Proximity message fields
+    private const string MISSING_MESSAGE = "Hold E to screw in a light bulb to the ceiling light";
+    private const string OK_MESSAGE = "Hold E to unscrew the light bulb from the ceiling light";
+    private const string BROKEN_MESSAGE = "Hold E to unscrew the broken light bulb from the ceiling light";
 
-	// Audio fields
-	private AudioSource audioSource;
-	public AudioClip insertSound;
-	public AudioClip removeSound;
+    // Audio fields
+    private AudioSource audioSource;
+    public AudioClip insertSound;
+    public AudioClip removeSound;
 
-	// Light fields
-	public LightBulbStatus lightBulbStatus;
-	private Light lightComponent;
-	private LightSwitch parentLightSwitch { get { return transform.parent ? transform.parent.GetComponent<LightSwitch>() : null; } }
-	private bool isConnected { get { return parentLightSwitch ? parentLightSwitch.IsOn : false; } }
+    // Light fields
+    public LightBulbStatus lightBulbStatus;
+    private Light lightComponent;
+    private LightSwitch parentLightSwitch { get { return transform.parent ? transform.parent.GetComponent<LightSwitch>() : null; } }
+    private bool isConnected { get { return parentLightSwitch ? parentLightSwitch.IsOn : false; } }
 
-	// Interact fields
-	private float totalActionTime { get { return (lightBulbStatus == LightBulbStatus.Missing) ? insertSound.length : removeSound.length; } }
-	private bool interacting;
-	private float actionProgress;
-	private Vector3 playerPosition;
+    // Interact fields
+    private float totalActionTime { get { return (lightBulbStatus == LightBulbStatus.Missing) ? insertSound.length : removeSound.length; } }
+    private bool interacting;
+    private bool monsterNear;
+    private float actionProgress;
+    private Vector3 playerPosition;
 
-	private ProximityMessage proximityMessage;
+    private ProximityMessage proximityMessage;
 
-	public void Start()
-	{
-		audioSource = GetComponent<AudioSource>();
-		lightComponent = GetComponentInChildren<Light>();
-		proximityMessage = GetComponent<ProximityMessage>();
-		SetProximityMessage();
-	}
+    public void Start()
+    {
+        monsterNear = false;
+        audioSource = GetComponent<AudioSource>();
+        lightComponent = GetComponentInChildren<Light>();
+        proximityMessage = GetComponent<ProximityMessage>();
 
-	public void Update()
-	{	
-		if (lightBulbStatus == LightBulbStatus.OK)
-			lightComponent.enabled = parentLightSwitch ? isConnected : true;
-		else
-			lightComponent.enabled = false;
-	}
+        SetProximityMessage();
+    }
 
-	public void OnTriggerStay2D(Collider2D other)
-	{
-		if (other.tag == "Player" && other.isTrigger == false)
-		{
-			if (Input.GetKeyDown(KeyCode.E))
-			{
-				playerPosition = other.transform.position;
-				StartAction();
-			}
-			
-			if (Input.GetKeyUp(KeyCode.E))
-				StopAction();
+    public void Update()
+    {
+        if (lightBulbStatus == LightBulbStatus.OK)
+            lightComponent.enabled = parentLightSwitch ? isConnected : true;
+        else
+            lightComponent.enabled = false;
 
-			if (interacting)
-			{
-				if (playerPosition == other.transform.position)
-					ProgressAction();
-				else
-					StopAction();
-			}
-		}
-	}
+        if (monsterNear && lightComponent.intensity > 0.0f)
+        {
+            lightComponent.intensity = lightComponent.intensity - (25.0f * Time.deltaTime);
+            if (lightComponent.intensity <= 0.0f)
+            {
+                lightComponent.intensity = 55.0f;
+                lightComponent.enabled = false;
+                lightBulbStatus = LightBulbStatus.Broken;
+                monsterNear = false;
+            }
+        }
+    }
 
-	private void StartAction()
-	{
-		interacting = true;
-		audioSource.clip = (lightBulbStatus == LightBulbStatus.Missing)
+    public void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.tag == "Player" && other.isTrigger == false)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                playerPosition = other.transform.position;
+                StartAction();
+            }
+
+            if (Input.GetKeyUp(KeyCode.E))
+                StopAction();
+
+            if (interacting)
+            {
+                if (playerPosition == other.transform.position)
+                    ProgressAction();
+                else
+                    StopAction();
+            }
+        }
+    }
+
+    public void MonsterProwing(bool state)
+    {
+        monsterNear = state;
+    }
+
+    private void StartAction()
+    {
+        interacting = true;
+        audioSource.clip = (lightBulbStatus == LightBulbStatus.Missing
+            || lightBulbStatus == LightBulbStatus.Broken)
 			? insertSound
 			: removeSound;
 		audioSource.Play();
@@ -112,9 +133,9 @@ public class CeilingLight : MonoBehaviour
 			lightBulbStatus = LightBulbStatus.OK; // Insert light bulb
 			break;
 		case LightBulbStatus.OK:
-		case LightBulbStatus.Broken:
-			lightBulbStatus = LightBulbStatus.Missing; // Remove light bulb
-			break;
+        case LightBulbStatus.Broken:
+		lightBulbStatus = LightBulbStatus.Missing; // Remove light bulb
+		break;
 		}
 
 		SetProximityMessage();

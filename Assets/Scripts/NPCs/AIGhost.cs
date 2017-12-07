@@ -32,17 +32,11 @@ public class AIGhost : MonoBehaviour
         float step = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, target[currTarget].position, step);
         if(currTarget == 0 && playerObject != null)
-        {
             sanitySystem.sanity -= 3.0f * Time.deltaTime;
-        }
-        if(currTarget == 1)
-        {
+        if(currTarget == 0)
             sanitySystem.isSeen(true);
-        }
         else
-        {
             sanitySystem.isSeen(false);
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -51,17 +45,16 @@ public class AIGhost : MonoBehaviour
         {
             prevCollider = other;
             if (other.gameObject.tag == "Player")
-            {
                 currTarget = 0;
-            }
             else if (other.gameObject.tag == "Waypoint" && other.gameObject == target[currTarget].gameObject)
-            {
                 StartCoroutine(Wait());
+            else if (other.gameObject.tag == "Light" && other.isActiveAndEnabled)
+            {
+                CeilingLight lightsystem = other.GetComponentInParent<CeilingLight>();
+                lightsystem.MonsterProwing(true);
             }
             else if (other.gameObject.tag != "Objects" && other.gameObject.tag != "Waypoint")
-            {
                 currTarget = 1;
-            }
         }
     }
 
@@ -70,9 +63,7 @@ public class AIGhost : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             if (currTarget < target.Length - 1)
-            {
                 currTarget = 1;
-            }
         }
     }
 
@@ -94,14 +85,12 @@ public class AIGhost : MonoBehaviour
         }
     }
 
-    IEnumerator Wait()
+        IEnumerator Wait()
     {
         //print(Time.time);
         yield return new WaitForSecondsRealtime(Random.Range(0, 4));
         if (currTarget < target.Length - 1)
-        {
             currTarget += 1;
-        }
         else
             currTarget = 1;
         //print(Time.time);
