@@ -308,6 +308,7 @@ MonoBehaviour:
   speedBezierCurveStart: 70
   speedBezierCurveStop: 15
   rotationalSpeed: 135
+  deathSprite: {fileID: 21300000, guid: b639a999e2cab5948b7704b0bbf74e41, type: 3}
 --- !u!212 &212527402164969680
 SpriteRenderer:
   m_ObjectHideFlags: 1
