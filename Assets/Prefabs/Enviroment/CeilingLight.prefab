@@ -55,7 +55,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1701055542488770}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.993958, y: 0.9408455, z: -1.2}
+  m_LocalPosition: {x: 1.44, y: 0.9408455, z: -1.2}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 4410005260332064}
@@ -172,7 +172,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -195,8 +195,8 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 0.87268823, g: 0.88235295, b: 0.70717996, a: 1}
-  m_Intensity: 55
-  m_Range: 1.7
+  m_Intensity: 28.58
+  m_Range: 2.4
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -246,7 +246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   insertSound: {fileID: 8300000, guid: 2fa63d9e54d60b64f8ab67f46cce2a4c, type: 3}
   removeSound: {fileID: 8300000, guid: a5ab0e817254aab4a9450e234e7c23c7, type: 3}
-  lightBulbStatus: 1
+  lightBulbStatus: 0
 --- !u!212 &212696516839000022
 SpriteRenderer:
   m_ObjectHideFlags: 1
