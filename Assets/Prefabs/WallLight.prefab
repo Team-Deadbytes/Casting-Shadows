@@ -9,36 +9,20 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1919642828376162}
+  m_RootGameObject: {fileID: 1927588184296540}
   m_IsPrefabParent: 1
---- !u!1 &1199220602847044
+--- !u!1 &1927588184296540
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4106671919406770}
-  - component: {fileID: 108853303432516460}
-  m_Layer: 0
-  m_Name: Light_wall
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1919642828376162
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4736077825569046}
-  - component: {fileID: 212085165061840860}
-  - component: {fileID: 114777312560145784}
-  - component: {fileID: 58621502988354422}
-  - component: {fileID: 82669653008907700}
+  - component: {fileID: 4760675263381402}
+  - component: {fileID: 212807858108483120}
+  - component: {fileID: 114274011310880374}
+  - component: {fileID: 58315881729788198}
+  - component: {fileID: 82066183415787324}
   m_Layer: 0
   m_Name: WallLight
   m_TagString: Untagged
@@ -46,39 +30,55 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4106671919406770
+--- !u!1 &1940375988722394
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4262986722513504}
+  - component: {fileID: 108763466384254380}
+  m_Layer: 0
+  m_Name: Light_wall
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4262986722513504
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1199220602847044}
+  m_GameObject: {fileID: 1940375988722394}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: -0.708}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4736077825569046}
+  m_Father: {fileID: 4760675263381402}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!4 &4736077825569046
+--- !u!4 &4760675263381402
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1919642828376162}
+  m_GameObject: {fileID: 1927588184296540}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.06, y: 5.55, z: 0}
+  m_LocalPosition: {x: 0.07168388, y: 5.5630984, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
-  - {fileID: 4106671919406770}
+  - {fileID: 4262986722513504}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!58 &58621502988354422
+--- !u!58 &58315881729788198
 CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1919642828376162}
+  m_GameObject: {fileID: 1927588184296540}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -88,12 +88,12 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.2
---- !u!82 &82669653008907700
+--- !u!82 &82066183415787324
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1919642828376162}
+  m_GameObject: {fileID: 1927588184296540}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -168,12 +168,12 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!108 &108853303432516460
+--- !u!108 &108763466384254380
 Light:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1199220602847044}
+  m_GameObject: {fileID: 1940375988722394}
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 0
@@ -204,12 +204,12 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &114777312560145784
+--- !u!114 &114274011310880374
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1919642828376162}
+  m_GameObject: {fileID: 1927588184296540}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16e20175e4afa58479d88eeba1795208, type: 3}
@@ -217,21 +217,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   model: 0
   powered: 0
-  switchState: 0
+  switchState: 1
   NotEquippedSprite: {fileID: 21300056, guid: 446001d0de6425e43bb470ff371a126f, type: 3}
   EquippedSprite: {fileID: 21300052, guid: 446001d0de6425e43bb470ff371a126f, type: 3}
   BrokenBulbSprite: {fileID: 21300058, guid: 446001d0de6425e43bb470ff371a126f, type: 3}
   BrokenGlassSprite: {fileID: 21300054, guid: 446001d0de6425e43bb470ff371a126f, type: 3}
-  light: {fileID: 1199220602847044}
-  shatterSound: {fileID: 8300000, guid: 95252ba37081bab4d840c6448c31bfec, type: 3}
-  bulbScrewSound: {fileID: 8300000, guid: 18f733715e3dd834aa4531f2663159f0, type: 3}
-  bulbUnscrewSound: {fileID: 8300000, guid: e21529e4e1304cd4a8fe49789c2fc60f, type: 3}
---- !u!212 &212085165061840860
+  lightSource: {fileID: 1940375988722394}
+  shatterSound: {fileID: 8300000, guid: 369ade04beac05c40984e0c4d9f12a29, type: 3}
+  bulbScrewSound: {fileID: 8300000, guid: 2fa63d9e54d60b64f8ab67f46cce2a4c, type: 3}
+  bulbUnscrewSound: {fileID: 8300000, guid: a5ab0e817254aab4a9450e234e7c23c7, type: 3}
+--- !u!212 &212807858108483120
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1919642828376162}
+  m_GameObject: {fileID: 1927588184296540}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
