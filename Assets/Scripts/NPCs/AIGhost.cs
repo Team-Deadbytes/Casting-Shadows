@@ -80,6 +80,7 @@ public class AIGhost : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            collision.gameObject.GetComponent<PlayerController>().Die();
             deathCanvas.gameObject.SetActive(true);
             Time.timeScale = 0.00001f;
         }
