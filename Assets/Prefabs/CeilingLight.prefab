@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 212696516839000022}
   - component: {fileID: 114864529911768566}
   - component: {fileID: 82142796214540468}
+  - component: {fileID: 114831224281118900}
   m_Layer: 0
   m_Name: CeilingLight
   m_TagString: Untagged
@@ -220,6 +221,18 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114831224281118900
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1701055542488770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8d79ec85d2c3104b97d0ce2b0278bbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Message: 
 --- !u!114 &114864529911768566
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -234,7 +247,6 @@ MonoBehaviour:
   insertSound: {fileID: 8300000, guid: 2fa63d9e54d60b64f8ab67f46cce2a4c, type: 3}
   removeSound: {fileID: 8300000, guid: a5ab0e817254aab4a9450e234e7c23c7, type: 3}
   lightBulbStatus: 1
-  totalActionTime: 1.5
 --- !u!212 &212696516839000022
 SpriteRenderer:
   m_ObjectHideFlags: 1
