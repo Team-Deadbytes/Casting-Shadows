@@ -4,61 +4,60 @@ using UnityEngine;
 
 public class CeilingLight : MonoBehaviour
 {
-    public enum LightBulbStatus
-    {
-        Missing,
-        OK,
-        Broken,
-    };
+	public enum LightBulbStatus
+	{
+		Missing,
+		OK,
+		Broken,
+	};
 
-    // Proximity message fields
-    private const string MISSING_MESSAGE = "Hold E to screw in a light bulb to the ceiling light";
-    private const string OK_MESSAGE = "Hold E to unscrew the light bulb from the ceiling light";
-    private const string BROKEN_MESSAGE = "Hold E to unscrew the broken light bulb from the ceiling light";
+	// Proximity message fields
+	private const string MISSING_MESSAGE = "Hold E to screw in a light bulb to the ceiling light";
+	private const string OK_MESSAGE      = "Hold E to unscrew the light bulb from the ceiling light";
+	private const string BROKEN_MESSAGE  = "Hold E to unscrew the broken light bulb from the ceiling light";
 
-    // Audio fields
-    private AudioSource audioSource;
-    public AudioClip insertSound;
-    public AudioClip removeSound;
+	// Audio fields
+	private AudioSource audioSource;
+	public AudioClip insertSound;
+	public AudioClip removeSound;
+	public AudioClip breakSound;
 
-    // Light fields
-    public LightBulbStatus lightBulbStatus;
-    private Light lightComponent;
-    public GameObject lightSource;
+	// Light fields
+	public LightBulbStatus lightBulbStatus;
+	private Light lightComponent;
+    public GameObject lightSource;	
     private LightSwitch parentLightSwitch { get { return transform.parent ? transform.parent.GetComponent<LightSwitch>() : null; } }
-    private bool isConnected { get { return parentLightSwitch ? parentLightSwitch.IsOn : false; } }
+	private bool isConnected { get { return parentLightSwitch ? parentLightSwitch.IsOn : false; } }
 
-    // Interact fields
-    private float totalActionTime { get { return (lightBulbStatus == LightBulbStatus.Missing) ? insertSound.length : removeSound.length; } }
-    private bool interacting;
+	// Interact fields
+	private float totalActionTime { get { return (lightBulbStatus == LightBulbStatus.Missing) ? insertSound.length : removeSound.length; } }
+	private bool interacting;
+	private float actionProgress;
+	private Vector3 playerPosition;
+
     private bool monsterNear;
     private float monsterGracePeriod;
-    private float actionProgress;
-    private Vector3 playerPosition;
     private float originalIntensity;
 
-    private ProximityMessage proximityMessage;
+	private ProximityMessage proximityMessage;
 
-    public void Start()
-    {
+	public void Start()
+	{
+		audioSource = GetComponent<AudioSource>();
+		lightComponent = GetComponentInChildren<Light>();
+		proximityMessage = GetComponent<ProximityMessage>();
         monsterGracePeriod = 0.0f;
         monsterNear = false;
         lightSource = this.gameObject.transform.GetChild(0).gameObject;
-        audioSource = GetComponent<AudioSource>();
-        lightComponent = GetComponentInChildren<Light>();
-        proximityMessage = GetComponent<ProximityMessage>();
         originalIntensity = lightComponent.intensity;
 
-        if(lightBulbStatus == LightBulbStatus.Missing
-            || lightBulbStatus == LightBulbStatus.Broken)
-        {
+        if (lightBulbStatus != LightBulbStatus.OK)
             lightComponent.enabled = false;
-        }
 
-        SetProximityMessage();
-    }
+		SetProximityMessage();
+	}
 
-    public void Update()
+	public void Update()
     {
         if (lightBulbStatus == LightBulbStatus.OK)
         {
@@ -89,45 +88,44 @@ public class CeilingLight : MonoBehaviour
         }
     }
 
-    public void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.tag == "Player" && other.isTrigger == false)
-        {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                playerPosition = other.transform.position;
-                StartAction();
-            }
+	public void OnTriggerStay2D(Collider2D other)
+	{
+		if (other.tag == "Player" && !other.isTrigger)
+		{
+			if (Input.GetKeyDown(KeyCode.E))
+			{
+				playerPosition = other.transform.position;
+				StartAction();
+			}
+			
+			if (Input.GetKeyUp(KeyCode.E))
+				StopAction();
 
-            if (Input.GetKeyUp(KeyCode.E))
-                StopAction();
+			if (interacting)
+			{
+				if (playerPosition == other.transform.position)
+					ProgressAction();
+				else
+					StopAction();
+			}
+		}
+	}
 
-            if (interacting)
-            {
-                if (playerPosition == other.transform.position)
-                    ProgressAction();
-                else
-                    StopAction();
-            }
-        }
-    }
+	private void StartAction()
+	{
+		interacting = true;
+		audioSource.clip = (lightBulbStatus == LightBulbStatus.Missing)
+			? insertSound
+			: removeSound;
+		audioSource.Play();
+	}
 
-    public void MonsterProwing(bool state)
+	public void MonsterProwing(bool state)
     {
         monsterNear = state;
         if (!state)
             monsterGracePeriod = 1.7f;
     }
-
-    private void StartAction()
-    {
-        interacting = true;
-        audioSource.clip = (lightBulbStatus == LightBulbStatus.Missing
-            || lightBulbStatus == LightBulbStatus.Broken)
-			? insertSound
-			: removeSound;
-		audioSource.Play();
-	}
 
 	private void ProgressAction()
 	{
@@ -149,21 +147,41 @@ public class CeilingLight : MonoBehaviour
 		actionProgress = 0f;
 		audioSource.Stop();
 	}
+
+	private void InsertLightBulb()
+	{
+		lightBulbStatus = LightBulbStatus.OK;
+		lightSource.SetActive(true);
+		transform.GetComponentInChildren<CeilingLightChild>().Renew();
+		SetProximityMessage();
+	}
+
+	private void RemoveLightBulb()
+	{
+		lightBulbStatus = LightBulbStatus.Missing;
+		SetProximityMessage();
+	}
+
+	public void BreakLightBulb()
+	{
+		audioSource.clip = breakSound;
+		audioSource.Play();
+		lightBulbStatus = LightBulbStatus.Broken;
+		SetProximityMessage();
+	}
 	
 	private void Interact()
 	{
 		switch (lightBulbStatus)
 		{
 		case LightBulbStatus.Missing:
-			lightBulbStatus = LightBulbStatus.OK; // Insert light bulb
+			InsertLightBulb();
 			break;
 		case LightBulbStatus.OK:
-        case LightBulbStatus.Broken:
-		lightBulbStatus = LightBulbStatus.Missing; // Remove light bulb
-		break;
+		case LightBulbStatus.Broken:
+			RemoveLightBulb();
+			break;
 		}
-
-		SetProximityMessage();
 	}
 
 	private void SetProximityMessage()
