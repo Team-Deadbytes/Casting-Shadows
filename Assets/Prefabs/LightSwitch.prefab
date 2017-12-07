@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 58324656451528574}
   m_Layer: 0
   m_Name: LightSwitch
-  m_TagString: Untagged
+  m_TagString: LightSwitch
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68,9 +68,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8bd29c94517a27479054ffd0f869af4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOn: 0
-  onSprite: {fileID: 21300038, guid: 446001d0de6425e43bb470ff371a126f, type: 3}
-  offSprite: {fileID: 21300040, guid: 446001d0de6425e43bb470ff371a126f, type: 3}
+  OnSprite: {fileID: 21300038, guid: 446001d0de6425e43bb470ff371a126f, type: 3}
+  OffSprite: {fileID: 21300040, guid: 446001d0de6425e43bb470ff371a126f, type: 3}
+  IsOn: 1
 --- !u!212 &212422783975672904
 SpriteRenderer:
   m_ObjectHideFlags: 1

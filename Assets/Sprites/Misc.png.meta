@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 446001d0de6425e43bb470ff371a126f
-timeCreated: 1512571794
-licenseType: Free
+timeCreated: 1512612679
+licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
     21300000: Table1
@@ -34,6 +34,10 @@ TextureImporter:
     21300054: WallLight_Broken
     21300056: WallLight_NoBulb
     21300058: WallLight_BrokenBulb
+    21300060: CeilingLight
+    21300062: CeilingLight_NoBulb
+    21300064: CeilingLight_Broken
+    21300066: CeilingLight_Broken_NoBulb
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -452,7 +456,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 15
+        y: 20
         width: 32
         height: 17
       alignment: 2
@@ -466,7 +470,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 10
+        y: 15
         width: 32
         height: 22
       alignment: 2
@@ -541,6 +545,62 @@ TextureImporter:
         height: 7
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CeilingLight
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 3
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CeilingLight_NoBulb
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 3
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CeilingLight_Broken
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 3
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CeilingLight_Broken_NoBulb
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 3
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
