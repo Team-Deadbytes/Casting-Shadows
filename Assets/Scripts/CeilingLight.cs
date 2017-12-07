@@ -26,7 +26,7 @@ public class CeilingLight : MonoBehaviour
 	// Light fields
 	public LightBulbStatus lightBulbStatus;
 	private Light lightComponent;
-	private LightSwitch parentLightSwitch { get { return transform.parent.GetComponent<LightSwitch>(); } }
+	private LightSwitch parentLightSwitch { get { return transform.parent ? transform.parent.GetComponent<LightSwitch>() : null; } }
 	private bool isConnected { get { return parentLightSwitch ? parentLightSwitch.IsOn : false; } }
 
 	// Interact fields
