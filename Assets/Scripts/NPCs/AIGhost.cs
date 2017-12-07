@@ -99,7 +99,7 @@ public class AIGhost : MonoBehaviour
                     {
                         lastTarget = currTarget;
                         currTarget += 2;
-                        if (currTarget == target.Length)
+                        if (currTarget >= target.Length)
                             currTarget = 1;
                     } else
                     {
