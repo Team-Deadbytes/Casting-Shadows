@@ -41,11 +41,11 @@ public class CeilingLight : MonoBehaviour
     public void Start()
     {
         monsterGracePeriod = 0.0f;
-        originalIntensity = lightComponent.intensity;
         monsterNear = false;
         audioSource = GetComponent<AudioSource>();
         lightComponent = GetComponentInChildren<Light>();
         proximityMessage = GetComponent<ProximityMessage>();
+        originalIntensity = lightComponent.intensity;
 
         SetProximityMessage();
     }
