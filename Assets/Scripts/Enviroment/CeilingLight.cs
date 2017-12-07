@@ -55,7 +55,7 @@ public class CeilingLight : MonoBehaviour
 
         if (monsterNear && lightComponent.intensity > 0.0f)
         {
-            lightComponent.intensity = lightComponent.intensity - (25.0f * Time.deltaTime);
+            lightComponent.intensity = lightComponent.intensity - (6.0f * Time.deltaTime);
             if (lightComponent.intensity <= 0.0f)
             {
                 lightComponent.intensity = 55.0f;

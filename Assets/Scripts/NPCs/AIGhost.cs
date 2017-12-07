@@ -65,6 +65,11 @@ public class AIGhost : MonoBehaviour
             if (currTarget < target.Length - 1)
                 currTarget = 1;
         }
+        else if (collision.gameObject.tag == "Light" && collision.isActiveAndEnabled)
+        {
+            CeilingLight lightsystem = collision.GetComponentInParent<CeilingLight>();
+            lightsystem.MonsterProwing(false);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
