@@ -14104,11 +14104,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114864529911768566, guid: 0a03e8d114fbfed4d930accbf5c61307,
-        type: 2}
-      propertyPath: lightBulbStatus
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0a03e8d114fbfed4d930accbf5c61307, type: 2}
   m_IsPrefabParent: 0
