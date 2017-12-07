@@ -68,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1124228600552100}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.01}
   m_LocalScale: {x: 3, y: 3, z: 0.99}
   m_Children: []
   m_Father: {fileID: 4222070978216806}
@@ -86,9 +86,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0022388035, y: 0}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.15015231
+  m_Radius: 0.15
 --- !u!58 &58501289380417126
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -101,9 +101,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0018356642, y: 0}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.0758334
+  m_Radius: 0.075
 --- !u!82 &82142796214540468
 AudioSource:
   m_ObjectHideFlags: 1
@@ -114,7 +114,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -234,7 +234,7 @@ MonoBehaviour:
   insertSound: {fileID: 8300000, guid: 2fa63d9e54d60b64f8ab67f46cce2a4c, type: 3}
   removeSound: {fileID: 8300000, guid: a5ab0e817254aab4a9450e234e7c23c7, type: 3}
   lightBulbStatus: 1
-  totalActionTime: 0
+  totalActionTime: 1.5
 --- !u!212 &212696516839000022
 SpriteRenderer:
   m_ObjectHideFlags: 1
