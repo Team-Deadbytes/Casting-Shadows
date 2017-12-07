@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     public float rotationalSpeed;
     private SanitySystem sanitySystem;
 
+    public Sprite deathSprite;
+
     AudioSource audioSource;
 
     private Animator animator;
@@ -22,6 +24,12 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
         sanitySystem = this.GetComponentInChildren<SanitySystem>();
+    }
+
+    public void Die()
+    {
+        GetComponent<Animator>().enabled = false;
+        GetComponent<SpriteRenderer>().sprite = deathSprite;
     }
 
     private float BezierCurve(float sanity)
