@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4791396332424852}
   - component: {fileID: 108723044164387400}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Light_wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
