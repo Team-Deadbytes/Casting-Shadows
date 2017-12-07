@@ -34,12 +34,14 @@ public class CeilingLight : MonoBehaviour
     private float monsterGracePeriod;
     private float actionProgress;
     private Vector3 playerPosition;
+    private float originalIntensity;
 
     private ProximityMessage proximityMessage;
 
     public void Start()
     {
         monsterGracePeriod = 0.0f;
+        originalIntensity = lightComponent.intensity;
         monsterNear = false;
         audioSource = GetComponent<AudioSource>();
         lightComponent = GetComponentInChildren<Light>();
@@ -60,7 +62,7 @@ public class CeilingLight : MonoBehaviour
             lightComponent.intensity = lightComponent.intensity - (6.0f * Time.deltaTime);
             if (lightComponent.intensity <= 0.0f)
             {
-                lightComponent.intensity = 55.0f;
+                lightComponent.intensity = originalIntensity;
                 lightComponent.enabled = false;
                 lightBulbStatus = LightBulbStatus.Broken;
                 monsterNear = false;
