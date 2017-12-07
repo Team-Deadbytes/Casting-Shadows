@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public float rotationalSpeed;
     private SanitySystem sanitySystem;
-    private Light playerLight;
 
     AudioSource audioSource;
 
@@ -19,7 +18,6 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
         sanitySystem = this.GetComponentInChildren<SanitySystem>();
-        playerLight = GetComponentInChildren<Light>();
     }
 
     public void Update()
