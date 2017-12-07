@@ -30,7 +30,7 @@ public class CeilingLight : MonoBehaviour
 	private bool isConnected { get { return parentLightSwitch ? parentLightSwitch.IsOn : false; } }
 
 	// Interact fields
-	public float totalActionTime;
+	private float totalActionTime { get { return (lightBulbStatus == LightBulbStatus.Missing) ? insertSound.length : removeSound.length; } }
 	private bool interacting;
 	private float actionProgress;
 	private Vector3 playerPosition;
