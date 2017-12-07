@@ -66,7 +66,7 @@ public class AIGhost : MonoBehaviour
                     currTarget -= 1;
                     if (currTarget <= 0)
                     {
-                        int num = Random.Range(1, target.Length);
+                        int num = Random.Range(1, target.Length - 1);
                         Transform waypoint = target[num];
                         this.gameObject.transform.position = waypoint.position;
                         currTarget = num + 1;
@@ -129,6 +129,9 @@ public class AIGhost : MonoBehaviour
             else if (other.gameObject.tag != "Objects" && other.gameObject.tag != "Waypoint")
             {
                 Debug.Log("Unknown " + other.gameObject.tag);
+                lastTarget = lastTarget - 1;
+                if (lastTarget == 0)
+                    lastTarget = target.Length - 1;
                 currTarget -= 1;
                 trailback = 2;
             }
