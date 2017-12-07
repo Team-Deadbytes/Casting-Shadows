@@ -117,7 +117,6 @@ public class AIGhost : MonoBehaviour
                 Light otherlit = other.gameObject.GetComponent<Light>();
                 if (otherlit.enabled)
                 {
-                    Debug.Log("Light " + other.gameObject.tag);
                     CeilingLight lightsystem = other.GetComponentInParent<CeilingLight>();
                     lightsystem.MonsterProwing(true);
 
