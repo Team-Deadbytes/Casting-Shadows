@@ -15,8 +15,6 @@ public class CeilingLight : MonoBehaviour
 	private const string MISSING_MESSAGE = "Hold E to screw in a light bulb to the ceiling light";
 	private const string OK_MESSAGE      = "Hold E to unscrew the light bulb from the ceiling light";
 	private const string BROKEN_MESSAGE  = "Hold E to unscrew the broken light bulb from the ceiling light";
-	private string proximityMessage;
-	private bool showProximityMessage;
 
 	// Audio fields
 	private AudioSource audioSource;
@@ -35,10 +33,13 @@ public class CeilingLight : MonoBehaviour
 	private float actionProgress;
 	private Vector3 playerPosition;
 
+	private ProximityMessage proximityMessage;
+
 	public void Start()
 	{
 		audioSource = GetComponent<AudioSource>();
 		lightComponent = GetComponentInChildren<Light>();
+		proximityMessage = GetComponent<ProximityMessage>();
 		SetProximityMessage();
 	}
 
@@ -48,12 +49,6 @@ public class CeilingLight : MonoBehaviour
 			lightComponent.enabled = parentLightSwitch ? isConnected : true;
 		else
 			lightComponent.enabled = false;
-	}
-
-	public void OnTriggerEnter2D(Collider2D other)
-	{
-		if (other.tag == "Player" && other.isTrigger == false)
-			showProximityMessage = true;
 	}
 
 	public void OnTriggerStay2D(Collider2D other)
@@ -76,15 +71,6 @@ public class CeilingLight : MonoBehaviour
 				else
 					StopAction();
 			}
-		}
-	}
-
-	public void OnTriggerExit2D(Collider2D other)
-	{
-		if (other.tag == "Player" && other.isTrigger == false)
-		{
-			StopAction();
-			showProximityMessage = false;
 		}
 	}
 
@@ -139,31 +125,14 @@ public class CeilingLight : MonoBehaviour
 		switch (lightBulbStatus)
 		{
 		case LightBulbStatus.Missing:
-			proximityMessage = MISSING_MESSAGE;
+			proximityMessage.Message = MISSING_MESSAGE;
 			break;
 		case LightBulbStatus.OK:
-			proximityMessage = OK_MESSAGE;
+			proximityMessage.Message = OK_MESSAGE;
 			break;
 		case LightBulbStatus.Broken:
-			proximityMessage = BROKEN_MESSAGE;
+			proximityMessage.Message = BROKEN_MESSAGE;
 			break;
-		}
-	}
-
-	private void OnGUI()
-	{
-		if (showProximityMessage)
-		{
-			GUIStyle labelStyle = GUI.skin.GetStyle("Label");
-			labelStyle.alignment = TextAnchor.UpperCenter;
-
-			float labelWidth = 300f;
-			float labelHeight = 50f;
-			float labelX = (Screen.width - labelWidth) / 2;
-			float labelY = Screen.height - 100;
-			Rect labelRect = new Rect(labelX, labelY, labelWidth, labelHeight);
-
-			GUI.Label(labelRect, proximityMessage, labelStyle);
 		}
 	}
 }
