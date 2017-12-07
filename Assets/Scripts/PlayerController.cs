@@ -6,6 +6,10 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed;
+
+    public float[] speedBezierCurvePoints;
+    public float speedBezierCurveStart, speedBezierCurveStop;
+
     public float rotationalSpeed;
     private SanitySystem sanitySystem;
 
@@ -20,13 +24,33 @@ public class PlayerController : MonoBehaviour
         sanitySystem = this.GetComponentInChildren<SanitySystem>();
     }
 
+    private float BezierCurve(float sanity)
+    {
+        float i = Mathf.Abs((sanity - speedBezierCurveStart) / (speedBezierCurveStop - speedBezierCurveStart));
+        float res = 0;
+        for(int point = 0; point < speedBezierCurvePoints.Length; point++)
+        {
+            float con = 3.0f;
+            if(point == 0  || point == speedBezierCurvePoints.Length - 1)
+                con = 1.0f;
+            res += con
+                * Mathf.Pow(1 - i, speedBezierCurvePoints.Length - point - 1)
+                * Mathf.Pow(i, point)
+                * speedBezierCurvePoints[point];
+        }
+        return res;
+    }
+
     public void Update()
     {
         Move2();
-        if (sanitySystem.sanity < 10.0f)
-            speed = 1;
+
+        if (sanitySystem.sanity < speedBezierCurveStart && sanitySystem.sanity > speedBezierCurveStop)
+            speed = BezierCurve(sanitySystem.sanity);
+        else if (sanitySystem.sanity >= speedBezierCurveStart)
+            speed = speedBezierCurvePoints[0];
         else
-            speed = 2;
+            speed = speedBezierCurvePoints[speedBezierCurvePoints.Length - 1];
     }
 
     private void Move1()

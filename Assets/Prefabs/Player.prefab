@@ -300,6 +300,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  speedBezierCurvePoints:
+  - 2
+  - 1.66
+  - 1.33
+  - 1
+  speedBezierCurveStart: 70
+  speedBezierCurveStop: 15
   rotationalSpeed: 3
 --- !u!212 &212527402164969680
 SpriteRenderer:
