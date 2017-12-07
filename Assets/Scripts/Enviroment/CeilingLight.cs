@@ -20,6 +20,7 @@ public class CeilingLight : MonoBehaviour
 	private AudioSource audioSource;
 	public AudioClip insertSound;
 	public AudioClip removeSound;
+	public AudioClip breakSound;
 
 	// Light fields
 	public LightBulbStatus lightBulbStatus;
@@ -103,21 +104,40 @@ public class CeilingLight : MonoBehaviour
 		actionProgress = 0f;
 		audioSource.Stop();
 	}
+
+	private void InsertLightBulb()
+	{
+		lightBulbStatus = LightBulbStatus.OK;
+		transform.GetComponentInChildren<CeilingLightChild>().Renew();
+		SetProximityMessage();
+	}
+
+	private void RemoveLightBulb()
+	{
+		lightBulbStatus = LightBulbStatus.Missing;
+		SetProximityMessage();
+	}
+
+	public void BreakLightBulb()
+	{
+		audioSource.clip = breakSound;
+		audioSource.Play();
+		lightBulbStatus = LightBulbStatus.Broken;
+		SetProximityMessage();
+	}
 	
 	private void Interact()
 	{
 		switch (lightBulbStatus)
 		{
 		case LightBulbStatus.Missing:
-			lightBulbStatus = LightBulbStatus.OK; // Insert light bulb
+			InsertLightBulb();
 			break;
 		case LightBulbStatus.OK:
 		case LightBulbStatus.Broken:
-			lightBulbStatus = LightBulbStatus.Missing; // Remove light bulb
+			RemoveLightBulb();
 			break;
 		}
-
-		SetProximityMessage();
 	}
 
 	private void SetProximityMessage()
