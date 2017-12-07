@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
-        sanitySystem = GetComponent<SanitySystem>();
+        sanitySystem = this.GetComponentInChildren<SanitySystem>();
         playerLight = GetComponentInChildren<Light>();
     }
 

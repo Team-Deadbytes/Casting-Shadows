@@ -21,7 +21,7 @@ public class AIGhost : MonoBehaviour
         currTarget = 1;
         playerObject = GameObject.Find("Player");
         if(playerObject != null)
-            sanitySystem = playerObject.GetComponent <SanitySystem>();
+            sanitySystem = playerObject.GetComponentInChildren<SanitySystem>();
     }
 
     // Update is called once per frame
