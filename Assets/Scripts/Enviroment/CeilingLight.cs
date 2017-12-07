@@ -151,6 +151,7 @@ public class CeilingLight : MonoBehaviour
 	private void InsertLightBulb()
 	{
 		lightBulbStatus = LightBulbStatus.OK;
+		lightSource.SetActive(true);
 		transform.GetComponentInChildren<CeilingLightChild>().Renew();
 		SetProximityMessage();
 	}
