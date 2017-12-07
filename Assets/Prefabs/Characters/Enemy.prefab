@@ -195,9 +195,13 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  speed: 1
+  patrolSpeed: 0.8
+  chaseSpeed: 1.5
   currTarget: 1
+  lastTarget: 0
   deathCanvas: {fileID: 0}
+  realspeed: 0
+  speedCheck: 0
 --- !u!212 &212731249845403600
 SpriteRenderer:
   m_ObjectHideFlags: 1

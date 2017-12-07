@@ -13,10 +13,8 @@ public class AIGhost : MonoBehaviour
     private GameObject doorObject;
     public Canvas deathCanvas;
 
-    [SerializeField]
-    public float realspeed;
-    [SerializeField]
-    public float speedCheck;
+    float realspeed;
+    float speedCheck;
     Vector3 lastPos;
     int trailback;
     bool waiting;
