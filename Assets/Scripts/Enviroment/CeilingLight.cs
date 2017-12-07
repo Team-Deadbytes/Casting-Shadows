@@ -24,6 +24,7 @@ public class CeilingLight : MonoBehaviour
     // Light fields
     public LightBulbStatus lightBulbStatus;
     private Light lightComponent;
+    public GameObject lightSource;
     private LightSwitch parentLightSwitch { get { return transform.parent ? transform.parent.GetComponent<LightSwitch>() : null; } }
     private bool isConnected { get { return parentLightSwitch ? parentLightSwitch.IsOn : false; } }
 
@@ -42,6 +43,7 @@ public class CeilingLight : MonoBehaviour
     {
         monsterGracePeriod = 0.0f;
         monsterNear = false;
+        lightSource = this.gameObject.transform.GetChild(0).gameObject;
         audioSource = GetComponent<AudioSource>();
         lightComponent = GetComponentInChildren<Light>();
         proximityMessage = GetComponent<ProximityMessage>();
@@ -59,9 +61,15 @@ public class CeilingLight : MonoBehaviour
     public void Update()
     {
         if (lightBulbStatus == LightBulbStatus.OK)
+        {
+            lightSource.SetActive(true);
             lightComponent.enabled = parentLightSwitch ? isConnected : true;
+        }
         else
+        {
+            lightSource.SetActive(false);
             lightComponent.enabled = false;
+        }
 
         if ((monsterNear || monsterGracePeriod > 0.0f) && lightComponent.isActiveAndEnabled && lightComponent.intensity > 0.0f)
         {
@@ -73,6 +81,7 @@ public class CeilingLight : MonoBehaviour
             {
                 lightComponent.intensity = originalIntensity;
                 lightComponent.enabled = false;
+                lightSource.SetActive(false);
                 lightBulbStatus = LightBulbStatus.Broken;
                 monsterNear = false;
                 monsterGracePeriod = 0.0f;
