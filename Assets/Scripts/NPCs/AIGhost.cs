@@ -52,6 +52,7 @@ public class AIGhost : MonoBehaviour
             {
                 CeilingLight lightsystem = other.GetComponentInParent<CeilingLight>();
                 lightsystem.MonsterProwing(true);
+                currTarget = 1;
             }
             else if (other.gameObject.tag != "Objects" && other.gameObject.tag != "Waypoint")
                 currTarget = 1;

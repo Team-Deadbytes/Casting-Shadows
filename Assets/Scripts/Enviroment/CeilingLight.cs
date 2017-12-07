@@ -31,6 +31,7 @@ public class CeilingLight : MonoBehaviour
     private float totalActionTime { get { return (lightBulbStatus == LightBulbStatus.Missing) ? insertSound.length : removeSound.length; } }
     private bool interacting;
     private bool monsterNear;
+    private float monsterGracePeriod;
     private float actionProgress;
     private Vector3 playerPosition;
 
@@ -38,6 +39,7 @@ public class CeilingLight : MonoBehaviour
 
     public void Start()
     {
+        monsterGracePeriod = 0.0f;
         monsterNear = false;
         audioSource = GetComponent<AudioSource>();
         lightComponent = GetComponentInChildren<Light>();
@@ -53,7 +55,7 @@ public class CeilingLight : MonoBehaviour
         else
             lightComponent.enabled = false;
 
-        if (monsterNear && lightComponent.intensity > 0.0f)
+        if ((monsterNear || monsterGracePeriod > 0.0f) && lightComponent.isActiveAndEnabled && lightComponent.intensity > 0.0f)
         {
             lightComponent.intensity = lightComponent.intensity - (6.0f * Time.deltaTime);
             if (lightComponent.intensity <= 0.0f)
@@ -62,6 +64,7 @@ public class CeilingLight : MonoBehaviour
                 lightComponent.enabled = false;
                 lightBulbStatus = LightBulbStatus.Broken;
                 monsterNear = false;
+                monsterGracePeriod = 0.0f;
             }
         }
     }
@@ -92,6 +95,8 @@ public class CeilingLight : MonoBehaviour
     public void MonsterProwing(bool state)
     {
         monsterNear = state;
+        if (!state)
+            monsterGracePeriod = 3.0f;
     }
 
     private void StartAction()
