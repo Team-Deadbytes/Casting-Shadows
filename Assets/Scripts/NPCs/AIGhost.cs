@@ -21,7 +21,9 @@ public class AIGhost : MonoBehaviour
         currTarget = 1;
         playerObject = GameObject.Find("Player");
         if(playerObject != null)
-            sanitySystem = playerObject.GetComponent <SanitySystem>();
+            sanitySystem = playerObject.GetComponentInChildren<SanitySystem>();
+        if (Time.timeScale < 0.1f)
+            Time.timeScale = 1.0f;
     }
 
     // Update is called once per frame
@@ -79,6 +81,7 @@ public class AIGhost : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             deathCanvas.gameObject.SetActive(true);
+            Time.timeScale = 0.00001f;
         }
         if (collision.gameObject.name.StartsWith("WoodenDoor"))
         {

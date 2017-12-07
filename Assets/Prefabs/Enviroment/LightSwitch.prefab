@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 114518176544277276}
   - component: {fileID: 212422783975672904}
   - component: {fileID: 58324656451528574}
+  - component: {fileID: 114375159985389020}
   m_Layer: 0
   m_Name: LightSwitch
   m_TagString: LightSwitch
@@ -57,6 +58,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.35
+--- !u!114 &114375159985389020
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1850903671597396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8d79ec85d2c3104b97d0ce2b0278bbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Message: 
 --- !u!114 &114518176544277276
 MonoBehaviour:
   m_ObjectHideFlags: 1
