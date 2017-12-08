@@ -60,15 +60,9 @@ public class CeilingLight : MonoBehaviour
 	public void Update()
     {
         if (lightBulbStatus == LightBulbStatus.OK)
-        {
-            lightSource.SetActive(true);
             lightComponent.enabled = parentLightSwitch ? isConnected : true;
-        }
         else
-        {
-            lightSource.SetActive(false);
             lightComponent.enabled = false;
-        }
 
         if ((monsterNear || monsterGracePeriod > 0.0f) && lightComponent.isActiveAndEnabled && lightComponent.intensity > 0.0f)
         {
@@ -79,9 +73,7 @@ public class CeilingLight : MonoBehaviour
             if (lightComponent.intensity <= 0.0f)
             {
                 lightComponent.intensity = originalIntensity;
-                lightComponent.enabled = false;
-                lightSource.SetActive(false);
-                lightBulbStatus = LightBulbStatus.Broken;
+				BreakLightBulb();
                 monsterNear = false;
                 monsterGracePeriod = 0.0f;
             }
