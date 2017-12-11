@@ -56,7 +56,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1701055542488770}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1.2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 4410005260332064}
@@ -70,7 +70,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1124228600552100}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: -0.01}
+  m_LocalPosition: {x: -0, y: 0, z: -1}
   m_LocalScale: {x: 3, y: 3, z: 0.99}
   m_Children: []
   m_Father: {fileID: 4222070978216806}
@@ -246,6 +246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalLightBulbLifetime: 10
+  FlickerThreshold: 4
   remainingLightBulbLifetime: 0
 --- !u!114 &114864529911768566
 MonoBehaviour:
@@ -262,6 +263,8 @@ MonoBehaviour:
   removeSound: {fileID: 8300000, guid: a5ab0e817254aab4a9450e234e7c23c7, type: 3}
   breakSound: {fileID: 8300000, guid: 369ade04beac05c40984e0c4d9f12a29, type: 3}
   lightBulbStatus: 0
+  MinFlickerTime: 0.075
+  MaxFlickerTime: 0.5
 --- !u!212 &212696516839000022
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -293,8 +296,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -346836625
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300062, guid: 446001d0de6425e43bb470ff371a126f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
