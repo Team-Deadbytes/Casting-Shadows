@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1316762914708078}
+  m_IsPrefabParent: 1
+--- !u!1 &1316762914708078
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4652417459672610}
+  - component: {fileID: 68481284839089394}
+  m_Layer: 11
+  m_Name: WallCollider 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4652417459672610
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1316762914708078}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.92, y: 9.4, z: 0.19287777}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &68481284839089394
+EdgeCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1316762914708078}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 0.8767457, y: -0.17128754}
+  - {x: 0.8773575, y: 0.82660484}
+  - {x: 1.8786888, y: 0.8283806}
+  - {x: 1.8739543, y: 1.8261213}
+  - {x: 0.87773085, y: 1.8260746}
+  - {x: 0.87704897, y: 4.828779}
+  - {x: 1.8794022, y: 4.828782}
+  - {x: 1.8803673, y: 5.831311}
+  - {x: 0.8799968, y: 5.829809}
+  - {x: 0.88077974, y: 6.8289356}
+  - {x: -0.12201929, y: 6.831007}
+  - {x: -0.12731886, y: 5.827758}
+  - {x: -2.123497, y: 5.8268986}
+  - {x: -2.1258965, y: 4.82724}
+  - {x: -0.11952877, y: 4.824456}
+  - {x: -0.12480736, y: 2.8310957}
+  - {x: -1.1201077, y: 2.8325472}
+  - {x: -1.1200733, y: 3.8321028}
+  - {x: -2.1220016, y: 3.830927}
+  - {x: -2.1233473, y: 1.8292713}
+  - {x: -0.12142086, y: 1.8277216}
+  - {x: -0.124604225, y: -0.17296696}
+  - {x: 0.8770108, y: -0.17159462}
