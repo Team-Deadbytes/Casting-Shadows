@@ -4,32 +4,39 @@ using UnityEngine;
 
 public class CeilingLight : MonoBehaviour
 {
-	public enum LightBulbStatus
-	{
-		Missing,
-		OK,
-		Broken,
-	};
+	public enum LightBulbStatus { Missing, OK, Broken };
 
-	// Proximity message fields
 	private const string MISSING_MESSAGE = "Hold E to screw in a light bulb to the ceiling light";
 	private const string OK_MESSAGE      = "Hold E to unscrew the light bulb from the ceiling light";
 	private const string BROKEN_MESSAGE  = "Hold E to unscrew the broken light bulb from the ceiling light";
 
-	// Audio fields
 	private AudioSource audioSource;
 	public AudioClip insertSound;
 	public AudioClip removeSound;
 	public AudioClip breakSound;
 
-	// Light fields
 	public LightBulbStatus lightBulbStatus;
+	public bool ConnectedToSwitch { get { return (transform.parent && transform.parent.tag == "LightSwitch"); } }
+	public bool SwitchIsOn { get { return parentLightSwitch ? parentLightSwitch.IsOn : false; } }
+	public bool LightIsOn
+	{
+		get
+		{
+			if (ConnectedToSwitch)
+				return SwitchIsOn && lightBulbStatus == LightBulbStatus.OK;
+			else
+				return lightBulbStatus == LightBulbStatus.OK;
+		}
+	}
 	private Light lightComponent;
-    public GameObject lightSource;	
-    private LightSwitch parentLightSwitch { get { return transform.parent ? transform.parent.GetComponent<LightSwitch>() : null; } }
-	private bool isConnected { get { return parentLightSwitch ? parentLightSwitch.IsOn : false; } }
+	private CeilingLightChild child;
+    private LightSwitch parentLightSwitch { get { return ConnectedToSwitch ? transform.parent.GetComponent<LightSwitch>() : null; } }
+	
+	private bool isFlickering;
+	public bool IsFlickering { get { return isFlickering; } }
+	public float MinFlickerTime;
+	public float MaxFlickerTime;
 
-	// Interact fields
 	private float totalActionTime { get { return (lightBulbStatus == LightBulbStatus.Missing) ? insertSound.length : removeSound.length; } }
 	private bool interacting;
 	private float actionProgress;
@@ -48,8 +55,8 @@ public class CeilingLight : MonoBehaviour
 		proximityMessage = GetComponent<ProximityMessage>();
         monsterGracePeriod = 0.0f;
         monsterNear = false;
-        lightSource = this.gameObject.transform.GetChild(0).gameObject;
         originalIntensity = lightComponent.intensity;
+		child = transform.GetComponentInChildren<CeilingLightChild>();
 
         if (lightBulbStatus != LightBulbStatus.OK)
             lightComponent.enabled = false;
@@ -59,10 +66,8 @@ public class CeilingLight : MonoBehaviour
 
 	public void Update()
     {
-        if (lightBulbStatus == LightBulbStatus.OK)
-            lightComponent.enabled = parentLightSwitch ? isConnected : true;
-        else
-            lightComponent.enabled = false;
+		if (!IsFlickering)
+			lightComponent.enabled = LightIsOn;
 
         if ((monsterNear || monsterGracePeriod > 0.0f) && lightComponent.isActiveAndEnabled && lightComponent.intensity > 0.0f)
         {
@@ -79,6 +84,24 @@ public class CeilingLight : MonoBehaviour
             }
         }
     }
+
+	public void Flicker()
+	{
+		isFlickering = true;
+		StartCoroutine(flicker());
+	}
+
+	private IEnumerator flicker()
+	{
+		while (LightIsOn && child.ShouldFlicker())
+		{
+			lightComponent.enabled = false;
+			yield return new WaitForSeconds(Random.Range(MinFlickerTime, MaxFlickerTime));
+			lightComponent.enabled = LightIsOn;
+			yield return new WaitForSeconds(Random.Range(MinFlickerTime, MaxFlickerTime));
+		}
+		isFlickering = false;
+	}
 
 	public void OnTriggerStay2D(Collider2D other)
 	{
@@ -143,8 +166,7 @@ public class CeilingLight : MonoBehaviour
 	private void InsertLightBulb()
 	{
 		lightBulbStatus = LightBulbStatus.OK;
-		lightSource.SetActive(true);
-		transform.GetComponentInChildren<CeilingLightChild>().Renew();
+		child.Renew();
 		SetProximityMessage();
 	}
 
