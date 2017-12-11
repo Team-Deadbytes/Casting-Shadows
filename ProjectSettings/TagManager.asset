@@ -45,3 +45,24 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Floors
+    uniqueID: 480925225
+    locked: 0
+  - name: Carpets
+    uniqueID: 3988615447
+    locked: 0
+  - name: BloodStains
+    uniqueID: 752371971
+    locked: 0
+  - name: Objects
+    uniqueID: 1495775319
+    locked: 0
+  - name: ObjectSurface
+    uniqueID: 2297330257
+    locked: 0
+  - name: Characters
+    uniqueID: 3396301049
+    locked: 0
+  - name: Ceiling
+    uniqueID: 3948130671
+    locked: 0
