@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4031873490046872}
   - component: {fileID: 68117835102470206}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: WallCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,7 +34,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1483610445262804}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -3.48, y: 10.55, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -55,5 +55,20 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.5, y: 0}
-  - {x: 0.5, y: 0}
+  - {x: -0.5635271, y: -0.3208208}
+  - {x: -0.56332684, y: 0.678607}
+  - {x: 1.4366846, y: 0.6790066}
+  - {x: 1.4357224, y: 2.678937}
+  - {x: 6.4368367, y: 2.6783838}
+  - {x: 6.4369917, y: -2.3215399}
+  - {x: 7.4375806, y: -2.3221226}
+  - {x: 7.43767, y: -3.3211803}
+  - {x: 6.436488, y: -3.3219032}
+  - {x: 6.4361553, y: -5.3223925}
+  - {x: 5.4362555, y: -5.321351}
+  - {x: 5.436737, y: 1.6785173}
+  - {x: 2.4364548, y: 1.6782761}
+  - {x: 2.4359612, y: -5.3218307}
+  - {x: 1.4367108, y: -5.322141}
+  - {x: 1.4359074, y: -0.3222189}
+  - {x: -0.5636878, y: -0.32133102}
