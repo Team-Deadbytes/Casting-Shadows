@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1246559791545102}
+  m_IsPrefabParent: 1
+--- !u!1 &1246559791545102
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4720686232156968}
+  - component: {fileID: 68340511217597244}
+  m_Layer: 11
+  m_Name: WallCollider (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4720686232156968
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1246559791545102}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.39, y: 14.62, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &68340511217597244
+EdgeCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1246559791545102}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -1.6533449, y: -0.39174938}
+  - {x: -1.6539223, y: 0.60948944}
+  - {x: 0.34555817, y: 0.6087446}
+  - {x: 0.34549832, y: 1.6109762}
+  - {x: 1.348499, y: 1.6106997}
+  - {x: 1.3493923, y: 0.6104803}
+  - {x: 4.3461695, y: 0.60779476}
+  - {x: 4.344, y: 1.606677}
+  - {x: 13.347075, y: 1.610343}
+  - {x: 13.345679, y: -1.3910341}
+  - {x: 12.346784, y: -1.3909264}
+  - {x: 12.3454485, y: -0.39176464}
+  - {x: 9.345298, y: -0.3933344}
+  - {x: 9.347004, y: -4.392291}
+  - {x: 10.327197, y: -4.390952}
+  - {x: 10.331108, y: -5.3893023}
+  - {x: 9.346973, y: -5.3894606}
+  - {x: 9.344756, y: -8.390736}
+  - {x: 10.346946, y: -8.390557}
+  - {x: 10.350184, y: -9.393105}
+  - {x: 9.345006, y: -9.391745}
+  - {x: 9.347407, y: -10.391538}
+  - {x: 8.346055, y: -10.393384}
+  - {x: 8.346899, y: -7.393338}
+  - {x: 7.3464165, y: -7.388775}
+  - {x: 7.3478184, y: -6.3885403}
+  - {x: 8.344944, y: -6.390154}
+  - {x: 8.349245, y: -0.38913727}
+  - {x: -1.6535685, y: -0.3917837}
