@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1241685892065544}
+  m_IsPrefabParent: 1
+--- !u!1 &1241685892065544
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4737683963116322}
+  - component: {fileID: 68097292185064292}
+  m_Layer: 11
+  m_Name: WallCollider (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4737683963116322
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1241685892065544}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.48, y: 10.55, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &68097292185064292
+EdgeCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1241685892065544}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.5635271, y: -0.3208208}
+  - {x: -0.56332684, y: 0.678607}
+  - {x: 1.4366846, y: 0.6790066}
+  - {x: 1.4357224, y: 2.678937}
+  - {x: 6.4368367, y: 2.6783838}
+  - {x: 6.4369917, y: -2.3215399}
+  - {x: 7.4375806, y: -2.3221226}
+  - {x: 7.43767, y: -3.3211803}
+  - {x: 6.436488, y: -3.3219032}
+  - {x: 6.4361553, y: -5.3223925}
+  - {x: 5.4362555, y: -5.321351}
+  - {x: 5.436737, y: 1.6785173}
+  - {x: 2.4364548, y: 1.6782761}
+  - {x: 2.4359612, y: -5.3218307}
+  - {x: 1.4367108, y: -5.322141}
+  - {x: 1.4359074, y: -0.3222189}
+  - {x: -0.5636878, y: -0.32133102}

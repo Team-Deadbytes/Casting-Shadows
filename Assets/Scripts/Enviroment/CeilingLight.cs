@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.UI;
 
 public class CeilingLight : MonoBehaviour
 {
@@ -47,8 +48,13 @@ public class CeilingLight : MonoBehaviour
 	private ProximityMessage proximityMessage;
 
 	private Inventory playersInventory; // Value set in collider method
+	
 
-	private SanitySystem playersSanitySystem; // Value set in collider method
+    private GameObject progressBar;
+    private Image progressBarImg;
+    
+    private SanitySystem playersSanitySystem; // Value set in collider method
+
 
 	public void Start()
 	{
@@ -64,7 +70,11 @@ public class CeilingLight : MonoBehaviour
             lightComponent.enabled = false;
 
 		SetProximityMessage();
-	}
+
+        progressBar = GameObject.Find("/Canvas/ChangeLightProgressBar");
+        progressBarImg = progressBar.GetComponent<Image>();
+        progressBarImg.fillAmount = 0;
+    }
 
 	public void Update()
     {
@@ -137,7 +147,7 @@ public class CeilingLight : MonoBehaviour
 			if (Input.GetKeyUp(KeyCode.E))
 				StopAction();
 
-			if (interacting)
+            if (interacting)
 			{
 				if (playerPosition == other.transform.position)
 					ProgressAction();
@@ -154,7 +164,8 @@ public class CeilingLight : MonoBehaviour
 			? removeSound
 			: insertSound;
 		audioSource.Play();
-	}
+        progressBarImg.enabled = true;
+    }
 
 	public void MonsterProwing(bool state)
     {
@@ -165,7 +176,9 @@ public class CeilingLight : MonoBehaviour
 
 	private void ProgressAction()
 	{
-		actionProgress += 1f * Time.deltaTime;
+		actionProgress += Time.deltaTime;
+
+		progressBarImg.fillAmount = actionProgress / totalActionTime;
 	
 		if (actionProgress >= totalActionTime)
 			FinishAction();
@@ -182,7 +195,8 @@ public class CeilingLight : MonoBehaviour
 		interacting = false;
 		actionProgress = 0f;
 		audioSource.Stop();
-	}
+        progressBarImg.enabled = false;
+    }
 
 	private void InsertLightBulb()
 	{
