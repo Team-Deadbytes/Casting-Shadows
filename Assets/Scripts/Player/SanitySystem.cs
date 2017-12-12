@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SanitySystem : MonoBehaviour
 {
+    public Slider sanityBar;
     public float sanity;
     private int inSafeZone;
     private bool seen;
@@ -14,6 +16,9 @@ public class SanitySystem : MonoBehaviour
         inSafeZone = 0;
         sanity = 100.0f;
         seen = false;
+        sanityBar.maxValue = 100.0f;
+        sanityBar.minValue = 0.0f;
+        sanityBar.value = 100.0f;
     }
 
     // Update is called once per frame
@@ -39,6 +44,7 @@ public class SanitySystem : MonoBehaviour
             if(sanity > 100.0f)
                 sanity = 100.0f;
         }
+        sanityBar.value = sanity;
     }
 
     public void isSeen(bool state)
@@ -68,5 +74,15 @@ public class SanitySystem : MonoBehaviour
             if(lightcomp.enabled)
                 inSafeZone++;
         }
+    }
+
+    public void IncrementSafeZone()
+    {
+        inSafeZone++;
+    }
+
+    public void DecrementSafeZone()
+    {
+        inSafeZone--;
     }
 }
