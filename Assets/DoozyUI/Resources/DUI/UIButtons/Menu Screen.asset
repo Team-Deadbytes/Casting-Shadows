@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Name: Menu Screen
   m_EditorClassIdentifier: 
   data:
-  - Start Game
   - Credit List
   - Settings
+  - Start Game
+  - Quit
