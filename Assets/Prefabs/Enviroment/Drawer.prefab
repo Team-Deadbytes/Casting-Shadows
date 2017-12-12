@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 212026816479396518}
   - component: {fileID: 61995359883568396}
   - component: {fileID: 114485559887141818}
+  - component: {fileID: 114084469664215688}
+  - component: {fileID: 58949385817039110}
   m_Layer: 0
   m_Name: Drawer
   m_TagString: Untagged
@@ -42,6 +44,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &58949385817039110
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1396355761253054}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.085}
+  serializedVersion: 2
+  m_Radius: 0.16
 --- !u!61 &61995359883568396
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -67,6 +84,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.32, y: 0.17000005}
   m_EdgeRadius: 0
+--- !u!114 &114084469664215688
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1396355761253054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8d79ec85d2c3104b97d0ce2b0278bbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Message: 
 --- !u!114 &114485559887141818
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -80,9 +109,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   closedSprite: {fileID: 21300046, guid: 446001d0de6425e43bb470ff371a126f, type: 3}
   open1Sprite: {fileID: 21300048, guid: 446001d0de6425e43bb470ff371a126f, type: 3}
-  open2Sprite: {fileID: 21300032, guid: 446001d0de6425e43bb470ff371a126f, type: 3}
   open1: 0
-  open2: 0
+  LightBulbCount: 0
 --- !u!212 &212026816479396518
 SpriteRenderer:
   m_ObjectHideFlags: 1
