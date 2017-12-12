@@ -30,6 +30,7 @@ public class CeilingLight : MonoBehaviour
 	private CeilingLightChild child;
     private LightSwitch parentLightSwitch { get { return ConnectedToSwitch ? transform.parent.GetComponent<LightSwitch>() : null; } }
 	public LightBulb LightBulb;
+	public bool StartWithLightBulb;
 	
 	private bool isFlickering;
 	public bool IsFlickering { get { return isFlickering; } }
@@ -66,8 +67,8 @@ public class CeilingLight : MonoBehaviour
         originalIntensity = lightComponent.intensity;
 		child = transform.GetComponentInChildren<CeilingLightChild>();
 
-        if (LightBulb == null)
-            lightComponent.enabled = false;
+		if (StartWithLightBulb)
+			LightBulb = new LightBulb();
 
 		SetProximityMessage();
 
