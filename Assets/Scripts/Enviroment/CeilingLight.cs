@@ -48,11 +48,10 @@ public class CeilingLight : MonoBehaviour
 	private ProximityMessage proximityMessage;
 
 	private Inventory playersInventory; // Value set in collider method
-
+	
 
     private GameObject progressBar;
     private Image progressBarImg;
-    private float currProgressTime;
     
     private SanitySystem playersSanitySystem; // Value set in collider method
 
@@ -75,7 +74,6 @@ public class CeilingLight : MonoBehaviour
         progressBar = GameObject.Find("/Canvas/ChangeLightProgressBar");
         progressBarImg = progressBar.GetComponent<Image>();
         progressBarImg.fillAmount = 0;
-        currProgressTime = 0;
     }
 
 	public void Update()
@@ -97,8 +95,6 @@ public class CeilingLight : MonoBehaviour
                 monsterGracePeriod = 0.0f;
             }
         }
-        if(progressBarImg.isActiveAndEnabled && currProgressTime <= totalActionTime)
-            progressBarImg.fillAmount = (currProgressTime += Time.deltaTime) / totalActionTime;
     }
 
 	public void Flicker()
@@ -169,7 +165,6 @@ public class CeilingLight : MonoBehaviour
 			: insertSound;
 		audioSource.Play();
         progressBarImg.enabled = true;
-        currProgressTime = 0;
     }
 
 	public void MonsterProwing(bool state)
@@ -181,7 +176,9 @@ public class CeilingLight : MonoBehaviour
 
 	private void ProgressAction()
 	{
-		actionProgress += 1f * Time.deltaTime;
+		actionProgress += Time.deltaTime;
+
+		progressBarImg.fillAmount = actionProgress / totalActionTime;
 	
 		if (actionProgress >= totalActionTime)
 			FinishAction();
@@ -199,7 +196,6 @@ public class CeilingLight : MonoBehaviour
 		actionProgress = 0f;
 		audioSource.Stop();
         progressBarImg.enabled = false;
-        currProgressTime = 0;
     }
 
 	private void InsertLightBulb()
