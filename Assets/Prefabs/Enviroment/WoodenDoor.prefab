@@ -39,12 +39,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1438896587645580}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 17.317408, y: 5.01567, z: 0}
-  m_LocalScale: {x: 1.6800014, y: 1.6800014, z: 1}
+  m_LocalPosition: {x: 1.3172045, y: 1.0154696, z: 0}
+  m_LocalScale: {x: 1.6800028, y: 1.6800028, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!58 &58385907531572890
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -105,7 +105,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 9
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
