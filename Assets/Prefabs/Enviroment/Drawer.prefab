@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114084469664215688}
   - component: {fileID: 61880005104762988}
   - component: {fileID: 61847824580336772}
+  - component: {fileID: 95944452642973830}
   m_Layer: 0
   m_Name: Drawer
   m_TagString: Untagged
@@ -38,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1396355761253054}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.58, y: -2.37, z: 0}
+  m_LocalPosition: {x: 1.533, y: 3.673, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
@@ -56,11 +57,11 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.085}
+  m_Offset: {x: 0, y: 0.025}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 1}
-    oldSize: {x: 0.32, y: 0.17}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.32, y: 0.22}
     newSize: {x: 0.32, y: 0.17}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -81,11 +82,11 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.21}
+  m_Offset: {x: 0, y: -0.09}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 1}
-    oldSize: {x: 0.32, y: 0.17}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.32, y: 0.22}
     newSize: {x: 0.32, y: 0.17}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -94,6 +95,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.41, y: 0.14}
   m_EdgeRadius: 0
+--- !u!95 &95944452642973830
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1396355761253054}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b415ccae1101bd641b7734b71e105b50, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114084469664215688
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -105,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d79ec85d2c3104b97d0ce2b0278bbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Message: 
+  Message: Hold E to search the drawers
 --- !u!114 &114485559887141818
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -117,9 +135,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2987a6323bca9b0459afed690586fa4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  closedSprite: {fileID: 21300046, guid: 446001d0de6425e43bb470ff371a126f, type: 3}
-  open1Sprite: {fileID: 21300048, guid: 446001d0de6425e43bb470ff371a126f, type: 3}
-  open1: 0
   LightBulbCount: 0
 --- !u!212 &212026816479396518
 SpriteRenderer:
@@ -155,7 +170,7 @@ SpriteRenderer:
   m_SortingLayerID: 1495775319
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300046, guid: 446001d0de6425e43bb470ff371a126f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 33aa1bcf6711e4b4b949ecdf655e3510, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
