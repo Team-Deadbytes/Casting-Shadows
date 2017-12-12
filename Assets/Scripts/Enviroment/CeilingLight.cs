@@ -48,6 +48,8 @@ public class CeilingLight : MonoBehaviour
 
 	private Inventory playersInventory; // Value set in collider method
 
+	private SanitySystem playersSanitySystem; // Value set in collider method
+
 	public void Start()
 	{
 		audioSource = GetComponent<AudioSource>();
@@ -105,9 +107,13 @@ public class CeilingLight : MonoBehaviour
 
 	public void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.tag == "Player" && !other.isTrigger)
+		if (other.tag == "Player")
+		{
 			if (playersInventory == null)
 				playersInventory = other.GetComponent<Inventory>();
+			if (playersSanitySystem == null)
+				playersSanitySystem = other.transform.Find("Point light").GetComponent<SanitySystem>();
+		}
 	}
 
 	public void OnTriggerStay2D(Collider2D other)
@@ -183,6 +189,7 @@ public class CeilingLight : MonoBehaviour
 		if (playersInventory.LightBulbs.Count > 0)
 		{
 			LightBulb = playersInventory.RemoveLightBulb();
+			playersSanitySystem.IncrementSafeZone();
 			SetProximityMessage();
 		}
 	}
@@ -191,6 +198,7 @@ public class CeilingLight : MonoBehaviour
 	{
 		playersInventory.AddLightBulb(LightBulb);
 		LightBulb = null;
+		playersSanitySystem.DecrementSafeZone();
 		SetProximityMessage();
 	}
 
@@ -199,6 +207,7 @@ public class CeilingLight : MonoBehaviour
 		audioSource.clip = breakSound;
 		audioSource.Play();
 		LightBulb = null;
+		playersSanitySystem.DecrementSafeZone();
 		SetProximityMessage();
 	}
 	

@@ -75,4 +75,14 @@ public class SanitySystem : MonoBehaviour
                 inSafeZone++;
         }
     }
+
+    public void IncrementSafeZone()
+    {
+        inSafeZone++;
+    }
+
+    public void DecrementSafeZone()
+    {
+        inSafeZone--;
+    }
 }
