@@ -7,7 +7,6 @@ public class Inventory : MonoBehaviour
 {
 	public Stack<LightBulb> LightBulbs;
 	public int InitialLightBulbCount;
-	public float LightBulbLifespan;
 
     private GameObject LightbulbCounterUI;
     private Text LightbulbCounterText;
@@ -17,14 +16,14 @@ public class Inventory : MonoBehaviour
 	{
 		LightBulbs = new Stack<LightBulb>();
 		for (int i = 0; i < InitialLightBulbCount; i++)
-			LightBulbs.Push(new LightBulb(LightBulbLifespan));
+			LightBulbs.Push(new LightBulb());
         LightbulbCounterUI = GameObject.Find("/Canvas/LightbulbCounter");
         if (LightbulbCounterUI != null)
         { 
             LightbulbCounterText = LightbulbCounterUI.GetComponent<Text>();
             LightbulbCounterText.text = InitialLightBulbCount.ToString();
         }
-    }
+	}
 
 	public void AddLightBulb(LightBulb lightBulb)
 	{
@@ -47,5 +46,5 @@ public class LightBulb
 {	
 	public float Lifespan;
 
-	public LightBulb(float lifespan) { Lifespan = lifespan; }
+	public LightBulb(float lifespan = 15) { Lifespan = lifespan; }
 }
