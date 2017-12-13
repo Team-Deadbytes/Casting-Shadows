@@ -245,9 +245,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36f65c863d4a67e43b544481b7bbdfbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TotalLightBulbLifetime: 10
   FlickerThreshold: 4
-  remainingLightBulbLifetime: 0
+  parent: {fileID: 0}
 --- !u!114 &114864529911768566
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -262,7 +261,7 @@ MonoBehaviour:
   insertSound: {fileID: 8300000, guid: 2fa63d9e54d60b64f8ab67f46cce2a4c, type: 3}
   removeSound: {fileID: 8300000, guid: a5ab0e817254aab4a9450e234e7c23c7, type: 3}
   breakSound: {fileID: 8300000, guid: 369ade04beac05c40984e0c4d9f12a29, type: 3}
-  lightBulbStatus: 0
+  StartWithLightBulb: 0
   MinFlickerTime: 0.075
   MaxFlickerTime: 0.5
 --- !u!212 &212696516839000022
