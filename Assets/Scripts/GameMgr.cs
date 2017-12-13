@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameMgr : MonoBehaviour
 {
@@ -44,5 +45,11 @@ public class GameMgr : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         isPaused = false;
+    }
+
+    public void ChangeToScene(string SceneToChange)
+    {
+        isPaused = false;
+        SceneManager.LoadScene(SceneToChange);
     }
 }
