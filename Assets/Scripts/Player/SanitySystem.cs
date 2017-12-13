@@ -69,11 +69,9 @@ public class SanitySystem : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Light") {
-            Light lightcomp = collision.gameObject.GetComponent<Light>();
-            if(lightcomp.enabled)
+        if (collision.tag == "Light")
+            if (collision.transform.parent.GetComponent<CeilingLight>().LightIsOn)
                 inSafeZone++;
-        }
     }
 
     public void IncrementSafeZone()

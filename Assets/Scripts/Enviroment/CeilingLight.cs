@@ -21,22 +21,24 @@ public class CeilingLight : MonoBehaviour
 		get
 		{
 			if (ConnectedToSwitch)
-				return SwitchIsOn && LightBulb != null;
+				return SwitchIsOn && lightBulb != null;
 			else
-				return LightBulb != null;
+				return lightBulb != null;
 		}
 	}
 	private Light lightComponent;
 	private CeilingLightChild child;
     private LightSwitch parentLightSwitch { get { return ConnectedToSwitch ? transform.parent.GetComponent<LightSwitch>() : null; } }
-	public LightBulb LightBulb;
+	private LightBulb lightBulb;
+	public LightBulb LightBulb { get { return lightBulb; } }
+	public bool StartWithLightBulb;
 	
 	private bool isFlickering;
 	public bool IsFlickering { get { return isFlickering; } }
 	public float MinFlickerTime;
 	public float MaxFlickerTime;
 
-	private float totalActionTime { get { return (LightBulb != null) ? removeSound.length : insertSound.length; } }
+	private float totalActionTime { get { return (lightBulb != null) ? removeSound.length : insertSound.length; } }
 	private bool interacting;
 	private float actionProgress;
 	private Vector3 playerPosition;
@@ -47,13 +49,14 @@ public class CeilingLight : MonoBehaviour
 
 	private ProximityMessage proximityMessage;
 
-	private Inventory playersInventory; // Value set in collider method
-	
+	private Inventory playersInventory;
+
+	private bool playerUnderLight;
 
     private GameObject progressBar;
     private Image progressBarImg;
     
-    private SanitySystem playersSanitySystem; // Value set in collider method
+    private SanitySystem playersSanitySystem;
 
 
 	public void Start()
@@ -65,9 +68,11 @@ public class CeilingLight : MonoBehaviour
         monsterNear = false;
         originalIntensity = lightComponent.intensity;
 		child = transform.GetComponentInChildren<CeilingLightChild>();
+		playersInventory = GameObject.Find("Player").GetComponent<Inventory>();
+		playersSanitySystem = GameObject.Find("Player").transform.Find("Point light").GetComponent<SanitySystem>();
 
-		if (LightBulb == null)
-			lightComponent.enabled = false;
+		if (StartWithLightBulb)
+			InsertLightBulb(false);
 
 		SetProximityMessage();
 
@@ -117,13 +122,8 @@ public class CeilingLight : MonoBehaviour
 
 	public void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.tag == "Player")
-		{
-			if (playersInventory == null)
-				playersInventory = other.GetComponent<Inventory>();
-			if (playersSanitySystem == null)
-				playersSanitySystem = other.transform.Find("Point light").GetComponent<SanitySystem>();
-		}
+		if (other.tag == "Player" && !other.isTrigger)
+			playerUnderLight = true;
 	}
 
 	public void OnTriggerStay2D(Collider2D other)
@@ -132,7 +132,7 @@ public class CeilingLight : MonoBehaviour
 		{
 			if (Input.GetKeyDown(KeyCode.E))
 			{
-				if (LightBulb == null && playersInventory.LightBulbs.Count <= 0)
+				if (lightBulb == null && playersInventory.LightBulbs.Count <= 0)
 				{
 					// TODO: Display message "You don't have any light bulbs." etc.
 					Debug.Log("You don't have any light bulbs.");
@@ -157,10 +157,16 @@ public class CeilingLight : MonoBehaviour
 		}
 	}
 
+	public void OnTriggerExit2D(Collider2D other)
+	{
+		if (other.tag == "Player" && !other.isTrigger)
+			playerUnderLight = false;
+	}
+
 	private void StartAction()
 	{
 		interacting = true;
-		audioSource.clip = (LightBulb != null)
+		audioSource.clip = (lightBulb != null)
 			? removeSound
 			: insertSound;
 		audioSource.Play();
@@ -198,21 +204,26 @@ public class CeilingLight : MonoBehaviour
         progressBarImg.enabled = false;
     }
 
-	private void InsertLightBulb()
+	private void InsertLightBulb(bool usePlayersLightBulb = true)
 	{
-		if (playersInventory.LightBulbs.Count > 0)
-		{
-			LightBulb = playersInventory.RemoveLightBulb();
+		lightBulb = usePlayersLightBulb
+			? playersInventory.RemoveLightBulb()
+			: new LightBulb();
+
+		if (playerUnderLight)
 			playersSanitySystem.IncrementSafeZone();
-			SetProximityMessage();
-		}
+			
+		SetProximityMessage();
 	}
 
 	private void RemoveLightBulb()
 	{
-		playersInventory.AddLightBulb(LightBulb);
-		LightBulb = null;
-		playersSanitySystem.DecrementSafeZone();
+		if (playerUnderLight)
+		{
+			playersInventory.AddLightBulb(lightBulb);
+			playersSanitySystem.DecrementSafeZone();
+		}
+		lightBulb = null;
 		SetProximityMessage();
 	}
 
@@ -220,14 +231,15 @@ public class CeilingLight : MonoBehaviour
 	{
 		audioSource.clip = breakSound;
 		audioSource.Play();
-		LightBulb = null;
-		playersSanitySystem.DecrementSafeZone();
+		lightBulb = null;
+		if (playerUnderLight)
+			playersSanitySystem.DecrementSafeZone();
 		SetProximityMessage();
 	}
 	
 	private void Interact()
 	{
-		if (LightBulb != null)
+		if (lightBulb != null)
 			RemoveLightBulb();
 		else
 			InsertLightBulb();
@@ -235,6 +247,6 @@ public class CeilingLight : MonoBehaviour
 
 	private void SetProximityMessage()
 	{
-		proximityMessage.Message = (LightBulb != null) ? REMOVE_MESSAGE : INSERT_MESSAGE;
+		proximityMessage.Message = (lightBulb != null) ? REMOVE_MESSAGE : INSERT_MESSAGE;
 	}
 }
