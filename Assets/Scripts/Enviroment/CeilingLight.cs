@@ -66,8 +66,8 @@ public class CeilingLight : MonoBehaviour
         originalIntensity = lightComponent.intensity;
 		child = transform.GetComponentInChildren<CeilingLightChild>();
 
-        if (LightBulb == null)
-            lightComponent.enabled = false;
+		if (LightBulb == null)
+			lightComponent.enabled = false;
 
 		SetProximityMessage();
 
