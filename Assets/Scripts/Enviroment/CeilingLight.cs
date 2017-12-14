@@ -32,6 +32,7 @@ public class CeilingLight : MonoBehaviour
 	private LightBulb lightBulb;
 	public LightBulb LightBulb { get { return lightBulb; } }
 	public bool StartWithLightBulb;
+	public float StartLightBulbLifetime;
 	
 	private bool isFlickering;
 	public bool IsFlickering { get { return isFlickering; } }
@@ -74,7 +75,7 @@ public class CeilingLight : MonoBehaviour
 		timedMessage = GetComponent<TimedMessage>();
 
 		if (StartWithLightBulb)
-			InsertLightBulb(false);
+			SpawnLightBulb(StartLightBulbLifetime);
 
 		SetProximityMessage();
 
@@ -206,15 +207,19 @@ public class CeilingLight : MonoBehaviour
         progressBarImg.enabled = false;
     }
 
-	private void InsertLightBulb(bool usePlayersLightBulb = true)
+	private void InsertLightBulb()
 	{
-		lightBulb = usePlayersLightBulb
-			? playersInventory.RemoveLightBulb()
-			: new LightBulb();
-
+		lightBulb = playersInventory.RemoveLightBulb();
 		if (playerUnderLight)
 			playersSanitySystem.IncrementSafeZone();
-			
+		SetProximityMessage();
+	}
+
+	private void SpawnLightBulb(float lifetime)
+	{
+		lightBulb = new LightBulb(lifetime);
+		if (playerUnderLight)
+			playersSanitySystem.IncrementSafeZone();
 		SetProximityMessage();
 	}
 
