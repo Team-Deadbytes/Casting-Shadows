@@ -72,6 +72,7 @@ public class CeilingLight : MonoBehaviour
 		child = transform.GetComponentInChildren<CeilingLightChild>();
 		playersInventory = GameObject.Find("Player").GetComponent<Inventory>();
 		playersSanitySystem = GameObject.Find("Player").transform.Find("Player top light").GetComponent<SanitySystem>();
+
 		timedMessage = GetComponent<TimedMessage>();
 
 		if (StartWithLightBulb)
