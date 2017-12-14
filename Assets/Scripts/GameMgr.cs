@@ -9,6 +9,11 @@ public class GameMgr : MonoBehaviour
     public GameObject PauseMenu;
     private bool isPaused;
 
+    private int lives;
+    private string currScene;
+    public Canvas winCanvas;
+    public Canvas deathCanvas;
+
     void Awake()
     {
         //Check if instance already exists
@@ -27,6 +32,8 @@ public class GameMgr : MonoBehaviour
     void Start()
     {
         isPaused = false;
+        lives = 3;
+        currScene = SceneManager.GetActiveScene().name;
     }
 
     void Update()
@@ -62,5 +69,35 @@ public class GameMgr : MonoBehaviour
     {
         isPaused = false;
         SceneManager.LoadScene(SceneToChange);
+    }
+
+    public void Die()
+    {
+        lives -= 1;
+        if (lives > 0)
+            deathCanvas.gameObject.SetActive(true);
+        else
+            SceneManager.LoadScene("DoozyMenu");
+        Time.timeScale = 0f;
+    }
+
+    public void Win()
+    {
+        if (SceneManager.GetActiveScene().name == "Level1")
+            SceneManager.LoadScene("Level2");
+        else if(SceneManager.GetActiveScene().name == "Level2")
+            SceneManager.LoadScene("Level3");
+        else
+        { 
+            Time.timeScale = 0f;
+            winCanvas.gameObject.SetActive(true);
+        }
+    }
+
+    private void OnLevelWasLoaded(int level)
+    {
+        deathCanvas.gameObject.SetActive(false);
+        winCanvas.gameObject.SetActive(false);
+        Time.timeScale = 1.0f;
     }
 }
