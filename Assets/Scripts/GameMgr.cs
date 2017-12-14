@@ -9,7 +9,7 @@ public class GameMgr : MonoBehaviour
     public GameObject PauseMenu;
     private bool isPaused;
 
-    private int lives;
+    // private int lives;
     private string currScene;
     public Canvas winCanvas;
     public Canvas deathCanvas;
@@ -32,7 +32,7 @@ public class GameMgr : MonoBehaviour
     void Start()
     {
         isPaused = false;
-        lives = 3;
+        // lives = 3;
         currScene = SceneManager.GetActiveScene().name;
     }
 
@@ -73,11 +73,12 @@ public class GameMgr : MonoBehaviour
 
     public void Die()
     {
-        lives -= 1;
-        if (lives > 0)
-            deathCanvas.gameObject.SetActive(true);
-        else
-            SceneManager.LoadScene("DoozyMenu");
+        // lives -= 1;
+        // if (lives > 0)
+        //     deathCanvas.gameObject.SetActive(true);
+        // else
+        //     SceneManager.LoadScene("DoozyMenu");
+        deathCanvas.gameObject.SetActive(true);
         Time.timeScale = 0f;
     }
 
