@@ -11,7 +11,7 @@ public class AIGhost : MonoBehaviour
     private Collider2D prevCollider;
     private GameObject playerObject;
     private GameObject doorObject;
-    public Canvas deathCanvas;
+    private GameMgr GameMgr;
 
     float realspeed;
     float speedCheck;
@@ -33,8 +33,7 @@ public class AIGhost : MonoBehaviour
         playerObject = GameObject.Find("Player");
         if(playerObject != null)
             sanitySystem = playerObject.GetComponentInChildren<SanitySystem>();
-        if (Time.timeScale < 0.1f)
-            Time.timeScale = 1.0f;
+        GameMgr = GameObject.Find("_GameManager").GetComponent<GameMgr>();
     }
 
     // Update is called once per frame
@@ -159,8 +158,7 @@ public class AIGhost : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<PlayerController>().Die();
-            deathCanvas.gameObject.SetActive(true);
-            Time.timeScale = 0.00001f;
+            GameMgr.Die();
         }
         if (collision.gameObject.name.StartsWith("WoodenDoor"))
         {
