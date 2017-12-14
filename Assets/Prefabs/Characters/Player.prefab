@@ -340,15 +340,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ba55eac6ce74b04b9a8c43b82924191, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 1.5
   speedBezierCurvePoints:
-  - 2
-  - 1.66
-  - 1.33
+  - 1.5
+  - 1.333
+  - 1.167
   - 1
   speedBezierCurveStart: 70
   speedBezierCurveStop: 15
-  rotationalSpeed: 135
+  rotationalSpeed: 180
   deathSprite: {fileID: 21300000, guid: b639a999e2cab5948b7704b0bbf74e41, type: 3}
 --- !u!114 &114247239837395236
 MonoBehaviour:
@@ -374,7 +374,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitialLightBulbCount: 6
-  LightBulbLifespan: 20
 --- !u!212 &212527402164969680
 SpriteRenderer:
   m_ObjectHideFlags: 1
