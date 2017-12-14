@@ -78,6 +78,7 @@ GameObject:
   - component: {fileID: 58987894664638778}
   - component: {fileID: 82680736241403956}
   - component: {fileID: 114256380378425502}
+  - component: {fileID: 114751071525727544}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -415,6 +416,7 @@ MonoBehaviour:
   speedBezierCurveStart: 70
   speedBezierCurveStop: 15
   rotationalSpeed: 180
+  dashMultiplyer: 0
   deathSprite: {fileID: 21300000, guid: b639a999e2cab5948b7704b0bbf74e41, type: 3}
 --- !u!114 &114247239837395236
 MonoBehaviour:
@@ -440,6 +442,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitialLightBulbCount: 6
+--- !u!114 &114751071525727544
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1959372752366446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e4dc9e1340561c40b6469b77b423a75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stamina: 0
+  regenRate: 0
+  decreaseRate: 0
 --- !u!212 &212527402164969680
 SpriteRenderer:
   m_ObjectHideFlags: 1
