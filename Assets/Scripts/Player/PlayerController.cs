@@ -51,14 +51,14 @@ public class PlayerController : MonoBehaviour
 
     public void Update()
     {
-        Move2();
-
         if (sanitySystem.sanity < speedBezierCurveStart && sanitySystem.sanity > speedBezierCurveStop)
             speed = BezierCurve(sanitySystem.sanity);
         else if (sanitySystem.sanity >= speedBezierCurveStart)
             speed = speedBezierCurvePoints[0];
         else
             speed = speedBezierCurvePoints[speedBezierCurvePoints.Length - 1];
+
+        Move2();
     }
 
     private void Move1()
