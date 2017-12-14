@@ -17,9 +17,12 @@ public class DashController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        stamina = 100;
-        regenRate = 1;
-        decreaseRate = 5;
+        if(stamina == 0)
+            stamina = 100;
+        if (regenRate == 0)
+            regenRate = 20;
+        if (decreaseRate == 0)
+            decreaseRate = 200;
         canDash = true;
         currentStamina = stamina;
         staminaBar = GameObject.Find("/Canvas/StaminaCircle");
@@ -32,21 +35,21 @@ public class DashController : MonoBehaviour
     {
         // if player is dashing decrease his stamina
         if (dashing)
-            currentStamina -= decreaseRate;
+            currentStamina -= decreaseRate * Time.deltaTime;
 
         // if stamina reaches 0 then player cant dash
-        if (currentStamina == 0)
+        if (currentStamina <= 0)
             stopDash();
 
         // if player cant dash then he regenerates stamina
         if (!canDash && currentStamina < stamina)
-            currentStamina += regenRate;
+            currentStamina += regenRate * Time.deltaTime;
 
         // when stamina is completely regenerated then player can dash again
         if (currentStamina >= stamina)
             canDash = true;
 
-        Debug.Log((currentStamina / stamina) * 100);
+        //Debug.Log((currentStamina / stamina) * 100);
         staminaImage.fillAmount = currentStamina / stamina; // update stamina circle
     }
 
