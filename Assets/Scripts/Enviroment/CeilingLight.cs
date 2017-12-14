@@ -32,6 +32,7 @@ public class CeilingLight : MonoBehaviour
 	private LightBulb lightBulb;
 	public LightBulb LightBulb { get { return lightBulb; } }
 	public bool StartWithLightBulb;
+	public float StartLightBulbLifetime;
 	
 	private bool isFlickering;
 	public bool IsFlickering { get { return isFlickering; } }
@@ -58,6 +59,7 @@ public class CeilingLight : MonoBehaviour
     
     private SanitySystem playersSanitySystem;
 
+	private TimedMessage timedMessage;
 
 	public void Start()
 	{
@@ -71,8 +73,10 @@ public class CeilingLight : MonoBehaviour
 		playersInventory = GameObject.Find("Player").GetComponent<Inventory>();
 		playersSanitySystem = GameObject.Find("Player").transform.Find("Player top light").GetComponent<SanitySystem>();
 
+		timedMessage = GetComponent<TimedMessage>();
+
 		if (StartWithLightBulb)
-			InsertLightBulb(false);
+			SpawnLightBulb(StartLightBulbLifetime);
 
 		SetProximityMessage();
 
@@ -134,8 +138,8 @@ public class CeilingLight : MonoBehaviour
 			{
 				if (lightBulb == null && playersInventory.LightBulbs.Count <= 0)
 				{
-					// TODO: Display message "You don't have any light bulbs." etc.
-					Debug.Log("You don't have any light bulbs.");
+					timedMessage.Message = "I don't have any light bulbs.";
+					timedMessage.Show();
 				}
 				else
 				{
@@ -204,15 +208,19 @@ public class CeilingLight : MonoBehaviour
         progressBarImg.enabled = false;
     }
 
-	private void InsertLightBulb(bool usePlayersLightBulb = true)
+	private void InsertLightBulb()
 	{
-		lightBulb = usePlayersLightBulb
-			? playersInventory.RemoveLightBulb()
-			: new LightBulb();
-
+		lightBulb = playersInventory.RemoveLightBulb();
 		if (playerUnderLight)
 			playersSanitySystem.IncrementSafeZone();
-			
+		SetProximityMessage();
+	}
+
+	private void SpawnLightBulb(float lifetime)
+	{
+		lightBulb = new LightBulb(lifetime);
+		if (playerUnderLight)
+			playersSanitySystem.IncrementSafeZone();
 		SetProximityMessage();
 	}
 
