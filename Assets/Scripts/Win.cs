@@ -4,23 +4,18 @@ using UnityEngine;
 
 public class Win : MonoBehaviour {
 
-    public Canvas winCanvas;
+    private GameMgr GameMgr;
 
     // Use this for initialization
     void Start () {
-		
+        GameMgr = GameObject.Find("_GameManager").GetComponent<GameMgr>();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player" && other.isTrigger == false)
         {
-            winCanvas.gameObject.SetActive(true);
-            Time.timeScale = 0f;
+            GameMgr.Win();
         }
     }
 }

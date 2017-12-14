@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 61880005104762988}
   - component: {fileID: 61847824580336772}
   - component: {fileID: 95944452642973830}
+  - component: {fileID: 114413881157851088}
   m_Layer: 0
   m_Name: Drawer
   m_TagString: Untagged
@@ -124,6 +125,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Message: Hold E to search the drawers
+  TypeEffect: 0
+  height: 0
+  FontSize: 0
+--- !u!114 &114413881157851088
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1396355761253054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f5b98315f805f4c88227082e25a5a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Message: 
+  FontSize: 0
+  VerticalPosition: 0
+  Duration: 0
 --- !u!114 &114485559887141818
 MonoBehaviour:
   m_ObjectHideFlags: 1
