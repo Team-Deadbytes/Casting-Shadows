@@ -481,7 +481,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 134333823}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -306.8, y: -87.9, z: 0}
+  m_LocalPosition: {x: -390.3, y: -98.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1455258411}
@@ -4184,7 +4184,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 920166095}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2, y: 221, z: 0}
+  m_LocalPosition: {x: 0, y: 150, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1455258411}
@@ -4192,7 +4192,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2, y: 221}
+  m_AnchoredPosition: {x: 0, y: 150}
   m_SizeDelta: {x: 294.11, y: 106.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &920166097
@@ -4733,7 +4733,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 962694935}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: 221, z: 0}
+  m_LocalPosition: {x: 0, y: 150, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1455258411}
@@ -4741,7 +4741,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2, y: 221}
+  m_AnchoredPosition: {x: 0, y: 150}
   m_SizeDelta: {x: 294.11, y: 106.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &962694937
@@ -5008,8 +5008,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Hi Mr. Electrician, Thank you very much for coming in such a short notice.
-    These lights here... uhh... actually the ghost here is driving me crazy.
+  m_Text: Thank you for coming on such short notice electrician. These lights here...
+    uhh... actually the ghost here is driving me crazy. I have been staying in the
+    lights to avoid them.
 --- !u!222 &962694941
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6231,7 +6232,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Pff... Ghost... what a bullshit.
+  m_Text: Pff... Ghosts... what nonsense.
 --- !u!222 &1137543744
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7308,7 +7309,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1423220487}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -307, y: -97.399994, z: 0}
+  m_LocalPosition: {x: -390.5, y: -108.399994, z: 0}
   m_LocalScale: {x: 0.5544902, y: 0.55449027, z: 0.55449027}
   m_Children: []
   m_Father: {fileID: 1455258411}
@@ -7465,7 +7466,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1455258407}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 350, y: 197, z: 0}
+  m_LocalPosition: {x: 433.5, y: 208, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 962694936}
@@ -8162,7 +8163,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1617136158}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -255.59999, y: -99.3, z: 0}
+  m_LocalPosition: {x: -339.09998, y: -110.3, z: 0}
   m_LocalScale: {x: 0.77306503, y: 1.3961545, z: 0.7730649}
   m_Children: []
   m_Father: {fileID: 1455258411}
@@ -8300,7 +8301,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1623521238}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2, y: 221, z: 0}
+  m_LocalPosition: {x: 0, y: 150, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1455258411}
@@ -8308,7 +8309,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2, y: 221}
+  m_AnchoredPosition: {x: 0, y: 150}
   m_SizeDelta: {x: 294.11, y: 106.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1623521240
