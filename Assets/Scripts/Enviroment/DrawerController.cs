@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
+using System.Text;
 
 public class DrawerController : MonoBehaviour
 {
@@ -20,11 +22,14 @@ public class DrawerController : MonoBehaviour
     private GameObject progressBar;
     private Image progressBarImg;
 
+    private TimedMessage timedMessage;
+
     void Start ()
     {
         progressBar = GameObject.Find("/Canvas/ChangeLightProgressBar");
         animator = GetComponent<Animator>();
         progressBarImg = progressBar.GetComponent<Image>();
+        timedMessage = GetComponent<TimedMessage>();
     }
 
     public void OnTriggerEnter2D(Collider2D other)
@@ -96,16 +101,21 @@ public class DrawerController : MonoBehaviour
     {
         if (LightBulbCount > 0)
         {
-            // TODO: Display message "You found X light bulbs" etc.
-            Debug.Log("You found " + LightBulbCount + " light bulbs");
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.Append("You found " + LightBulbCount + " light bulb");
+            if (LightBulbCount > 1)
+                stringBuilder.Append("s");
+            stringBuilder.Append(".");
+            timedMessage.Message = stringBuilder.ToString();
+            timedMessage.Show();
             for (int i = 0; i < LightBulbCount; i++)
                 playersInventory.AddLightBulb(new LightBulb());
             LightBulbCount = 0;
         }
         else
         {
-            // TODO: Display message "There is nothing in these drawers" etc.
-            Debug.Log("There is nothing in these drawers");
+            timedMessage.Message = "There is nothing in these drawers.";
+            timedMessage.Show();
         }
     }
 }
