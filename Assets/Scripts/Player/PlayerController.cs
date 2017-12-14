@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour
 
     public void Start()
     {
+        if (dashMultiplyer == 0)
+            dashMultiplyer = 2.5f;
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
         dashController = GetComponent<DashController>();
