@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public float speedBezierCurveStart, speedBezierCurveStop;
 
     public float rotationalSpeed;
+    public float dashMultiplyer;
     private SanitySystem sanitySystem;
 
     public Sprite deathSprite;
@@ -18,11 +19,13 @@ public class PlayerController : MonoBehaviour
     AudioSource audioSource;
 
     private Animator animator;
+    private DashController dashController;
 
     public void Start()
     {
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+        dashController = GetComponent<DashController>();
         sanitySystem = this.GetComponentInChildren<SanitySystem>();
     }
 
@@ -36,10 +39,10 @@ public class PlayerController : MonoBehaviour
     {
         float i = Mathf.Abs((sanity - speedBezierCurveStart) / (speedBezierCurveStop - speedBezierCurveStart));
         float res = 0;
-        for(int point = 0; point < speedBezierCurvePoints.Length; point++)
+        for (int point = 0; point < speedBezierCurvePoints.Length; point++)
         {
             float con = 3.0f;
-            if(point == 0  || point == speedBezierCurvePoints.Length - 1)
+            if (point == 0 || point == speedBezierCurvePoints.Length - 1)
                 con = 1.0f;
             res += con
                 * Mathf.Pow(1 - i, speedBezierCurvePoints.Length - point - 1)
@@ -57,6 +60,14 @@ public class PlayerController : MonoBehaviour
             speed = speedBezierCurvePoints[0];
         else
             speed = speedBezierCurvePoints[speedBezierCurvePoints.Length - 1];
+
+        // player tries to dash
+        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+            if (dashController.dash()) // checks if player can dash
+                speed *= dashMultiplyer;
+        // player stops dashing
+        if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
+            dashController.stopDash(); // tell dash controller that player is not dashing
 
         Move2();
     }
