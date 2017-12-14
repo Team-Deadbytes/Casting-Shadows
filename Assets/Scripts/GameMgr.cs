@@ -73,7 +73,11 @@ public class GameMgr : MonoBehaviour
 
     public void Die()
     {
-        deathCanvas.gameObject.SetActive(true);
+        lives -= 1;
+        if (lives > 0)
+            deathCanvas.gameObject.SetActive(true);
+        else
+            SceneManager.LoadScene("DoozyMenu");
         Time.timeScale = 0f;
     }
 
