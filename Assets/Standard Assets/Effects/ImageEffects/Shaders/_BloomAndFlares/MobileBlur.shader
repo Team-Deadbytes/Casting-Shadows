@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 
 Shader "Hidden/FastBlur" {
 	Properties {
@@ -13,13 +15,7 @@ Shader "Hidden/FastBlur" {
 		sampler2D _Bloom;
 				
 		uniform half4 _MainTex_TexelSize;
-		half4 _MainTex_ST;
-
-		half4 _Bloom_ST;
-
 		uniform half4 _Parameter;
-
-		
 
 		struct v2f_tap
 		{
@@ -34,16 +30,16 @@ Shader "Hidden/FastBlur" {
 		{
 			v2f_tap o;
 
-			o.pos = UnityObjectToClipPos(v.vertex);
-        	o.uv20 = UnityStereoScreenSpaceUVAdjust(v.texcoord + _MainTex_TexelSize.xy, _MainTex_ST);
-			o.uv21 = UnityStereoScreenSpaceUVAdjust(v.texcoord + _MainTex_TexelSize.xy * half2(-0.5h,-0.5h), _MainTex_ST);
-			o.uv22 = UnityStereoScreenSpaceUVAdjust(v.texcoord + _MainTex_TexelSize.xy * half2(0.5h,-0.5h), _MainTex_ST);
-			o.uv23 = UnityStereoScreenSpaceUVAdjust(v.texcoord + _MainTex_TexelSize.xy * half2(-0.5h,0.5h), _MainTex_ST);
+			o.pos = UnityObjectToClipPos (v.vertex);
+        	o.uv20 = v.texcoord + _MainTex_TexelSize.xy;				
+			o.uv21 = v.texcoord + _MainTex_TexelSize.xy * half2(-0.5h,-0.5h);	
+			o.uv22 = v.texcoord + _MainTex_TexelSize.xy * half2(0.5h,-0.5h);		
+			o.uv23 = v.texcoord + _MainTex_TexelSize.xy * half2(-0.5h,0.5h);		
 
 			return o; 
 		}					
 		
-		fixed4 fragDownsample ( v2f_tap i ) : SV_Target
+		fixed4 fragDownsample ( v2f_tap i ) : COLOR
 		{				
 			fixed4 color = tex2D (_MainTex, i.uv20);
 			color += tex2D (_MainTex, i.uv21);
@@ -76,7 +72,7 @@ Shader "Hidden/FastBlur" {
 		v2f_withBlurCoords8 vertBlurHorizontal (appdata_img v)
 		{
 			v2f_withBlurCoords8 o;
-			o.pos = UnityObjectToClipPos(v.vertex);
+			o.pos = UnityObjectToClipPos (v.vertex);
 			
 			o.uv = half4(v.texcoord.xy,1,1);
 			o.offs = _MainTex_TexelSize.xy * half2(1.0, 0.0) * _Parameter.x;
@@ -87,7 +83,7 @@ Shader "Hidden/FastBlur" {
 		v2f_withBlurCoords8 vertBlurVertical (appdata_img v)
 		{
 			v2f_withBlurCoords8 o;
-			o.pos = UnityObjectToClipPos(v.vertex);
+			o.pos = UnityObjectToClipPos (v.vertex);
 			
 			o.uv = half4(v.texcoord.xy,1,1);
 			o.offs = _MainTex_TexelSize.xy * half2(0.0, 1.0) * _Parameter.x;
@@ -95,7 +91,7 @@ Shader "Hidden/FastBlur" {
 			return o; 
 		}	
 
-		half4 fragBlur8 ( v2f_withBlurCoords8 i ) : SV_Target
+		half4 fragBlur8 ( v2f_withBlurCoords8 i ) : COLOR
 		{
 			half2 uv = i.uv.xy; 
 			half2 netFilterWidth = i.offs;  
@@ -104,7 +100,7 @@ Shader "Hidden/FastBlur" {
 			half4 color = 0;
   			for( int l = 0; l < 7; l++ )  
   			{   
-				half4 tap = tex2D(_MainTex, UnityStereoScreenSpaceUVAdjust(coords, _MainTex_ST));
+				half4 tap = tex2D(_MainTex, coords);
 				color += tap * curve4[l];
 				coords += netFilterWidth;
   			}
@@ -115,34 +111,40 @@ Shader "Hidden/FastBlur" {
 		v2f_withBlurCoordsSGX vertBlurHorizontalSGX (appdata_img v)
 		{
 			v2f_withBlurCoordsSGX o;
-			o.pos = UnityObjectToClipPos(v.vertex);
+			o.pos = UnityObjectToClipPos (v.vertex);
 			
-			o.uv = UnityStereoScreenSpaceUVAdjust(v.texcoord.xy, _MainTex_ST);
-
-			half offsetMagnitude = _MainTex_TexelSize.x * _Parameter.x;
-			o.offs[0] = UnityStereoScreenSpaceUVAdjust(v.texcoord.xyxy + offsetMagnitude * half4(-3.0h, 0.0h, 3.0h, 0.0h), _MainTex_ST);
-			o.offs[1] = UnityStereoScreenSpaceUVAdjust(v.texcoord.xyxy + offsetMagnitude * half4(-2.0h, 0.0h, 2.0h, 0.0h), _MainTex_ST);
-			o.offs[2] = UnityStereoScreenSpaceUVAdjust(v.texcoord.xyxy + offsetMagnitude * half4(-1.0h, 0.0h, 1.0h, 0.0h), _MainTex_ST);
+			o.uv = v.texcoord.xy;
+			half2 netFilterWidth = _MainTex_TexelSize.xy * half2(1.0, 0.0) * _Parameter.x; 
+			half4 coords = -netFilterWidth.xyxy * 3.0;
+			
+			o.offs[0] = v.texcoord.xyxy + coords * half4(1.0h,1.0h,-1.0h,-1.0h);
+			coords += netFilterWidth.xyxy;
+			o.offs[1] = v.texcoord.xyxy + coords * half4(1.0h,1.0h,-1.0h,-1.0h);
+			coords += netFilterWidth.xyxy;
+			o.offs[2] = v.texcoord.xyxy + coords * half4(1.0h,1.0h,-1.0h,-1.0h);
 
 			return o; 
-		}
+		}		
 		
 		v2f_withBlurCoordsSGX vertBlurVerticalSGX (appdata_img v)
 		{
 			v2f_withBlurCoordsSGX o;
-			o.pos = UnityObjectToClipPos(v.vertex);
+			o.pos = UnityObjectToClipPos (v.vertex);
 			
-			o.uv = half4(UnityStereoScreenSpaceUVAdjust(v.texcoord.xy, _MainTex_ST),1,1);
-
-			half offsetMagnitude = _MainTex_TexelSize.y * _Parameter.x;
-			o.offs[0] = UnityStereoScreenSpaceUVAdjust(v.texcoord.xyxy + offsetMagnitude * half4(0.0h, -3.0h, 0.0h, 3.0h), _MainTex_ST);
-			o.offs[1] = UnityStereoScreenSpaceUVAdjust(v.texcoord.xyxy + offsetMagnitude * half4(0.0h, -2.0h, 0.0h, 2.0h), _MainTex_ST);
-			o.offs[2] = UnityStereoScreenSpaceUVAdjust(v.texcoord.xyxy + offsetMagnitude * half4(0.0h, -1.0h, 0.0h, 1.0h), _MainTex_ST);
+			o.uv = half4(v.texcoord.xy,1,1);
+			half2 netFilterWidth = _MainTex_TexelSize.xy * half2(0.0, 1.0) * _Parameter.x;
+			half4 coords = -netFilterWidth.xyxy * 3.0;
+			
+			o.offs[0] = v.texcoord.xyxy + coords * half4(1.0h,1.0h,-1.0h,-1.0h);
+			coords += netFilterWidth.xyxy;
+			o.offs[1] = v.texcoord.xyxy + coords * half4(1.0h,1.0h,-1.0h,-1.0h);
+			coords += netFilterWidth.xyxy;
+			o.offs[2] = v.texcoord.xyxy + coords * half4(1.0h,1.0h,-1.0h,-1.0h);
 
 			return o; 
-		}
+		}	
 
-		half4 fragBlurSGX ( v2f_withBlurCoordsSGX i ) : SV_Target
+		half4 fragBlurSGX ( v2f_withBlurCoordsSGX i ) : COLOR
 		{
 			half2 uv = i.uv.xy;
 			
@@ -163,6 +165,7 @@ Shader "Hidden/FastBlur" {
 	
 	SubShader {
 	  ZTest Off Cull Off ZWrite Off Blend Off
+	  Fog { Mode off }  
 
 	// 0
 	Pass { 
@@ -171,6 +174,7 @@ Shader "Hidden/FastBlur" {
 		
 		#pragma vertex vert4Tap
 		#pragma fragment fragDownsample
+		#pragma fragmentoption ARB_precision_hint_fastest 
 		
 		ENDCG
 		 
@@ -185,6 +189,7 @@ Shader "Hidden/FastBlur" {
 		
 		#pragma vertex vertBlurVertical
 		#pragma fragment fragBlur8
+		#pragma fragmentoption ARB_precision_hint_fastest 
 		
 		ENDCG 
 		}	
@@ -198,6 +203,7 @@ Shader "Hidden/FastBlur" {
 		
 		#pragma vertex vertBlurHorizontal
 		#pragma fragment fragBlur8
+		#pragma fragmentoption ARB_precision_hint_fastest 
 		
 		ENDCG
 		}	
@@ -212,6 +218,7 @@ Shader "Hidden/FastBlur" {
 		
 		#pragma vertex vertBlurVerticalSGX
 		#pragma fragment fragBlurSGX
+		#pragma fragmentoption ARB_precision_hint_fastest 
 		
 		ENDCG
 		}	
@@ -225,6 +232,7 @@ Shader "Hidden/FastBlur" {
 		
 		#pragma vertex vertBlurHorizontalSGX
 		#pragma fragment fragBlurSGX
+		#pragma fragmentoption ARB_precision_hint_fastest 
 		
 		ENDCG
 		}	

@@ -8,6 +8,7 @@ TagManager:
   - Light
   - Waypoint
   - LightSwitch
+  - onlyTrigger
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Enemy
   - Light
   - Wall
-  - 
+  - Door
   - 
   - 
   - 

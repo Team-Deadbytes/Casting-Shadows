@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 58385907531572890}
   - component: {fileID: 82337320054597164}
   - component: {fileID: 114411665815165524}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: WoodenDoor
   m_TagString: Objects
   m_Icon: {fileID: 0}
@@ -39,8 +39,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1438896587645580}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 1.3172045, y: 1.0154696, z: 0}
-  m_LocalScale: {x: 1.6800028, y: 1.6800028, z: 1}
+  m_LocalPosition: {x: 4.001, y: 1.998, z: 0}
+  m_LocalScale: {x: 1.6800038, y: 1.6800038, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
