@@ -58,6 +58,7 @@ public class CeilingLight : MonoBehaviour
     
     private SanitySystem playersSanitySystem;
 
+	private TimedMessage timedMessage;
 
 	public void Start()
 	{
@@ -70,6 +71,7 @@ public class CeilingLight : MonoBehaviour
 		child = transform.GetComponentInChildren<CeilingLightChild>();
 		playersInventory = GameObject.Find("Player").GetComponent<Inventory>();
 		playersSanitySystem = GameObject.Find("Player").transform.Find("Point light").GetComponent<SanitySystem>();
+		timedMessage = GetComponent<TimedMessage>();
 
 		if (StartWithLightBulb)
 			InsertLightBulb(false);
@@ -134,8 +136,8 @@ public class CeilingLight : MonoBehaviour
 			{
 				if (lightBulb == null && playersInventory.LightBulbs.Count <= 0)
 				{
-					// TODO: Display message "You don't have any light bulbs." etc.
-					Debug.Log("You don't have any light bulbs.");
+					timedMessage.Message = "I don't have any light bulbs.";
+					timedMessage.Show();
 				}
 				else
 				{
