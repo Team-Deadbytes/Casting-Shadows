@@ -13,6 +13,16 @@ public class TimedMessage : MonoBehaviour
 	private float showTimer;
 	private string tmpMessage;
 
+	private void Start()
+	{
+		if (FontSize == 0)
+			FontSize = 20;
+		if (VerticalPosition == 0)
+			VerticalPosition = 150;
+		if (Duration == 0)
+			Duration = 4;
+	}
+
 	private void Update()
 	{
 		if (show)
