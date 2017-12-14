@@ -20,7 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4890318840206404}
   - component: {fileID: 61184068022574844}
+<<<<<<< HEAD
   - component: {fileID: 212655368522275898}
+=======
+>>>>>>> a0858b4a03b3bbe0df722f4cd1bf5daea2356354
   m_Layer: 11
   m_Name: WallCollider
   m_TagString: Untagged
