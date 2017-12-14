@@ -1448,74 +1448,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4089364395936182, guid: 775a1d603dcc8934cadc510136bae566,
     type: 2}
   m_PrefabInternal: {fileID: 247602792}
---- !u!1001 &82059635
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 641063925}
-    m_Modifications:
-    - target: {fileID: 4381318329209566, guid: 2bee1fbd2a174f7478c7d13ddb046aea, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 4.400632
-      objectReference: {fileID: 0}
-    - target: {fileID: 4381318329209566, guid: 2bee1fbd2a174f7478c7d13ddb046aea, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 4.45609
-      objectReference: {fileID: 0}
-    - target: {fileID: 4381318329209566, guid: 2bee1fbd2a174f7478c7d13ddb046aea, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4381318329209566, guid: 2bee1fbd2a174f7478c7d13ddb046aea, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4381318329209566, guid: 2bee1fbd2a174f7478c7d13ddb046aea, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4381318329209566, guid: 2bee1fbd2a174f7478c7d13ddb046aea, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 4381318329209566, guid: 2bee1fbd2a174f7478c7d13ddb046aea, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 4381318329209566, guid: 2bee1fbd2a174f7478c7d13ddb046aea, type: 2}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4381318329209566, guid: 2bee1fbd2a174f7478c7d13ddb046aea, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1.6800019
-      objectReference: {fileID: 0}
-    - target: {fileID: 4381318329209566, guid: 2bee1fbd2a174f7478c7d13ddb046aea, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1.6800019
-      objectReference: {fileID: 0}
-    - target: {fileID: 1438896587645580, guid: 2bee1fbd2a174f7478c7d13ddb046aea, type: 2}
-      propertyPath: m_Name
-      value: WoodenDoor (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4381318329209566, guid: 2bee1fbd2a174f7478c7d13ddb046aea, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 114539904569806172, guid: 2bee1fbd2a174f7478c7d13ddb046aea,
-        type: 2}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114539904569806172, guid: 2bee1fbd2a174f7478c7d13ddb046aea,
-        type: 2}
-      propertyPath: isInteractable
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 2bee1fbd2a174f7478c7d13ddb046aea, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &88070730
 GameObject:
   m_ObjectHideFlags: 0
@@ -3890,6 +3822,26 @@ Transform:
   m_Father: {fileID: 2024437937}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &269673034 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1438896587645580, guid: 2bee1fbd2a174f7478c7d13ddb046aea,
+    type: 2}
+  m_PrefabInternal: {fileID: 1638577724}
+--- !u!114 &269673041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 269673034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8d79ec85d2c3104b97d0ce2b0278bbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Message: The door is locked
+  TypeEffect: 1
+  height: 0
+  FontSize: 24
 --- !u!1001 &269903074
 Prefab:
   m_ObjectHideFlags: 0
@@ -6789,7 +6741,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4381318329209566, guid: 2bee1fbd2a174f7478c7d13ddb046aea, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4381318329209566, guid: 2bee1fbd2a174f7478c7d13ddb046aea, type: 2}
       propertyPath: m_LocalScale.y
@@ -8449,7 +8401,6 @@ Transform:
   m_Children:
   - {fileID: 1730841823}
   - {fileID: 1185145578}
-  - {fileID: 1486062584}
   - {fileID: 1272112079}
   m_Father: {fileID: 1903424883}
   m_RootOrder: 2
@@ -18816,11 +18767,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4089364395936182, guid: 775a1d603dcc8934cadc510136bae566,
     type: 2}
   m_PrefabInternal: {fileID: 1117003628}
---- !u!4 &1486062584 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4381318329209566, guid: 2bee1fbd2a174f7478c7d13ddb046aea,
-    type: 2}
-  m_PrefabInternal: {fileID: 82059635}
 --- !u!1001 &1486750538
 Prefab:
   m_ObjectHideFlags: 0
