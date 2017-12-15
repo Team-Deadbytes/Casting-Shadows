@@ -14,3 +14,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Level1.unity
     guid: b4ab6734deb36ea45b3ab7a7f4631856
+  - enabled: 1
+    path: Assets/Empty-Level.unity
+    guid: 7e616cd7d204ab54680964d579ddc7d0
+  - enabled: 1
+    path: Assets/Intro.unity
+    guid: cc137ee65ef8954478904ad5466dd3d1
+  - enabled: 1
+    path: Assets/Level1AITest.unity
+    guid: e3cd788c0fee2c04ea907c42a34c6d9e
+  - enabled: 1
+    path: Assets/Level2.unity
+    guid: 9b06a20672a39a24089bc16970d20c47
+  - enabled: 1
+    path: Assets/Level3.unity
+    guid: 9413ebf7b1cfa1e4d93d84bd96631797
