@@ -6163,7 +6163,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 169265832}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -129, y: -108.399994, z: 0}
+  m_LocalPosition: {x: -241, y: -108.399994, z: 0}
   m_LocalScale: {x: 0.5544902, y: 0.55449027, z: 0.55449027}
   m_Children: []
   m_Father: {fileID: 441873838}
@@ -10661,7 +10661,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 306066476}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -128.8, y: -98.9, z: 0}
+  m_LocalPosition: {x: -240.8, y: -98.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 441873838}
@@ -16743,7 +16743,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 441873834}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 172, y: 208, z: 0}
+  m_LocalPosition: {x: 284, y: 208, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1894978218}
@@ -22151,6 +22151,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114367955468905638, guid: 1f639e83ebf9b2c4caa61ccb7aefee91,
+        type: 2}
+      propertyPath: monsters.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4813647879412042, guid: 1f639e83ebf9b2c4caa61ccb7aefee91, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0.49
@@ -22191,12 +22196,12 @@ Prefab:
     - target: {fileID: 114367955468905638, guid: 1f639e83ebf9b2c4caa61ccb7aefee91,
         type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114115713106260258, guid: 1f639e83ebf9b2c4caa61ccb7aefee91,
         type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114367955468905638, guid: 1f639e83ebf9b2c4caa61ccb7aefee91,
         type: 2}
@@ -22208,6 +22213,21 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 332351003}
+    - target: {fileID: 114367955468905638, guid: 1f639e83ebf9b2c4caa61ccb7aefee91,
+        type: 2}
+      propertyPath: monsters.Array.data[0]
+      value: 
+      objectReference: {fileID: 1475814916}
+    - target: {fileID: 114367955468905638, guid: 1f639e83ebf9b2c4caa61ccb7aefee91,
+        type: 2}
+      propertyPath: monsters.Array.data[2]
+      value: 
+      objectReference: {fileID: 587732474}
+    - target: {fileID: 114367955468905638, guid: 1f639e83ebf9b2c4caa61ccb7aefee91,
+        type: 2}
+      propertyPath: monsters.Array.data[1]
+      value: 
+      objectReference: {fileID: 2146972434}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1f639e83ebf9b2c4caa61ccb7aefee91, type: 2}
   m_IsPrefabParent: 0
@@ -22457,6 +22477,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4089364395936182, guid: 775a1d603dcc8934cadc510136bae566,
     type: 2}
   m_PrefabInternal: {fileID: 586896113}
+--- !u!1 &587732474 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1566628074942688, guid: 35f6303aa9df6a54b92f70969f00d1ff,
+    type: 2}
+  m_PrefabInternal: {fileID: 338630992}
 --- !u!1001 &588743648
 Prefab:
   m_ObjectHideFlags: 0
@@ -31184,6 +31209,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114785667168088416, guid: 06615150ab7b7204a88519863b5c9835,
+        type: 2}
+      propertyPath: monsters.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4287163357498674, guid: 06615150ab7b7204a88519863b5c9835, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -31226,6 +31256,21 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114785667168088416, guid: 06615150ab7b7204a88519863b5c9835,
+        type: 2}
+      propertyPath: monsters.Array.data[0]
+      value: 
+      objectReference: {fileID: 1475814916}
+    - target: {fileID: 114785667168088416, guid: 06615150ab7b7204a88519863b5c9835,
+        type: 2}
+      propertyPath: monsters.Array.data[1]
+      value: 
+      objectReference: {fileID: 2146972434}
+    - target: {fileID: 114785667168088416, guid: 06615150ab7b7204a88519863b5c9835,
+        type: 2}
+      propertyPath: monsters.Array.data[2]
+      value: 
+      objectReference: {fileID: 587732474}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 06615150ab7b7204a88519863b5c9835, type: 2}
   m_IsPrefabParent: 0
@@ -55563,6 +55608,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4219399353491626, guid: e8d87347a74f7a54fa453f39b942fe83,
     type: 2}
   m_PrefabInternal: {fileID: 1084412691}
+--- !u!1 &1475814916 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1566628074942688, guid: 35f6303aa9df6a54b92f70969f00d1ff,
+    type: 2}
+  m_PrefabInternal: {fileID: 223294699}
 --- !u!1001 &1476291525
 Prefab:
   m_ObjectHideFlags: 0
@@ -61012,7 +61062,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1669438909}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -77.6, y: -110.3, z: 0}
+  m_LocalPosition: {x: -189.6, y: -110.3, z: 0}
   m_LocalScale: {x: 0.77306503, y: 1.3961545, z: 0.7730649}
   m_Children: []
   m_Father: {fileID: 441873838}
@@ -69210,7 +69260,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1894978217}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -34.300003, y: -162.7, z: 0}
+  m_LocalPosition: {x: -146.29999, y: -162.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 537555110}
@@ -78462,3 +78512,8 @@ Transform:
   m_PrefabParentObject: {fileID: 4381318329209566, guid: 2bee1fbd2a174f7478c7d13ddb046aea,
     type: 2}
   m_PrefabInternal: {fileID: 2146342647}
+--- !u!1 &2146972434 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1566628074942688, guid: 35f6303aa9df6a54b92f70969f00d1ff,
+    type: 2}
+  m_PrefabInternal: {fileID: 190116905}
