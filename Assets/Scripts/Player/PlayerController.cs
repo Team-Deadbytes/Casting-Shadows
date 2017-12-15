@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
 
     private Animator animator;
     private DashController dashController;
+    
 
     public void Start()
     {
@@ -118,16 +119,19 @@ public class PlayerController : MonoBehaviour
                 transform.position += transform.right * speed * Time.deltaTime;
             else if (Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.W))
                 transform.position += (-1 * transform.right) * (speed / 2) * Time.deltaTime;
-            if (audioSource.isPlaying == false)
-            {
-                audioSource.volume = Random.Range(0.2f, 0.4f);
-                audioSource.pitch = Random.Range(0.9f, 1.1f);
-                audioSource.Play();
-            }
-
         }
         else
             // Stop player-walk animation
             animator.SetTrigger("playerWalkEnd");
+    }
+
+    private void FootstepAudio()
+    {
+        if (audioSource.isPlaying == false)
+        {
+            audioSource.volume = Random.Range(0.2f, 0.4f);
+            audioSource.pitch = Random.Range(0.9f, 1.1f);
+            audioSource.PlayOneShot(audioSource.clip);
+        }
     }
 }
