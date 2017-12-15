@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -110,6 +110,7 @@ public class GameMgr : MonoBehaviour
         DeathCountText.text = "Deaths: " + DeathCount.ToString();
         Text TimerText = winCanvas.transform.Find("TotalTime").GetComponent<Text>();
         TimerText.text = "Play Time: " + Timer.ToString("#.00") + "s";
+
     }
     void OnEnable()
     {
