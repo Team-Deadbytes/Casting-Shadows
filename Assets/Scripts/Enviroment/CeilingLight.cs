@@ -47,12 +47,11 @@ public class CeilingLight : MonoBehaviour
     private bool monsterNear;
     private float monsterGracePeriod;
     private float originalIntensity;
+    private CircleCollider2D monsterCollider;
 
 	private ProximityMessage proximityMessage;
 
 	private Inventory playersInventory;
-
-	private bool playerUnderLight;
 
     private GameObject progressBar;
     private Image progressBarImg;
@@ -73,12 +72,20 @@ public class CeilingLight : MonoBehaviour
 		playersInventory = GameObject.Find("Player").GetComponent<Inventory>();
 		playersSanitySystem = GameObject.Find("Player").transform.Find("Player top light").GetComponent<SanitySystem>();
 
-		timedMessage = GetComponent<TimedMessage>();
+        CircleCollider2D[] allColliders = GetComponentsInChildren<CircleCollider2D>();
+        foreach(CircleCollider2D collider in allColliders)
+        {
+            if (collider.gameObject.name == "MonsterCollider")
+                monsterCollider = collider;
+        }
+
+        timedMessage = GetComponent<TimedMessage>();
 
 		if (StartWithLightBulb)
 			SpawnLightBulb(StartLightBulbLifetime);
+        monsterCollider.enabled = StartWithLightBulb;
 
-		SetProximityMessage();
+        SetProximityMessage();
 
         progressBar = GameObject.Find("/Canvas/ChangeLightProgressBar");
         progressBarImg = progressBar.GetComponent<Image>();
@@ -124,12 +131,6 @@ public class CeilingLight : MonoBehaviour
 		isFlickering = false;
 	}
 
-	public void OnTriggerEnter2D(Collider2D other)
-	{
-		if (other.tag == "Player" && !other.isTrigger)
-			playerUnderLight = true;
-	}
-
 	public void OnTriggerStay2D(Collider2D other)
 	{
 		if (other.tag == "Player" && !other.isTrigger)
@@ -159,12 +160,6 @@ public class CeilingLight : MonoBehaviour
 					StopAction();
 			}
 		}
-	}
-
-	public void OnTriggerExit2D(Collider2D other)
-	{
-		if (other.tag == "Player" && !other.isTrigger)
-			playerUnderLight = false;
 	}
 
 	private void StartAction()
@@ -211,39 +206,44 @@ public class CeilingLight : MonoBehaviour
 	private void InsertLightBulb()
 	{
 		lightBulb = playersInventory.RemoveLightBulb();
-		if (playerUnderLight)
+		if (child.PlayerUnderLight)
 			playersSanitySystem.IncrementSafeZone();
 		SetProximityMessage();
-	}
+        monsterCollider.enabled = true;
+
+    }
 
 	private void SpawnLightBulb(float lifetime)
 	{
 		lightBulb = new LightBulb(lifetime);
-		if (playerUnderLight)
+		if (child.PlayerUnderLight)
 			playersSanitySystem.IncrementSafeZone();
 		SetProximityMessage();
-	}
+        monsterCollider.enabled = true;
+    }
 
 	private void RemoveLightBulb()
 	{
-		if (playerUnderLight)
+		if (child.PlayerUnderLight)
 		{
 			playersInventory.AddLightBulb(lightBulb);
 			playersSanitySystem.DecrementSafeZone();
 		}
 		lightBulb = null;
 		SetProximityMessage();
-	}
+        monsterCollider.enabled = false;
+    }
 
 	public void BreakLightBulb()
 	{
 		audioSource.clip = breakSound;
 		audioSource.Play();
 		lightBulb = null;
-		if (playerUnderLight)
+		if (child.PlayerUnderLight)
 			playersSanitySystem.DecrementSafeZone();
 		SetProximityMessage();
-	}
+        monsterCollider.enabled = false;
+    }
 	
 	private void Interact()
 	{
