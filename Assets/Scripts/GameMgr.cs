@@ -99,10 +99,10 @@ public class GameMgr : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "Level1")
             SceneManager.LoadScene("Level2");
-        else if(SceneManager.GetActiveScene().name == "Level2")
+        else if (SceneManager.GetActiveScene().name == "Level2")
             SceneManager.LoadScene("Level3");
         else
-        { 
+        {
             Time.timeScale = 0f;
             winCanvas.gameObject.SetActive(true);
         }
@@ -111,18 +111,26 @@ public class GameMgr : MonoBehaviour
         Text TimerText = winCanvas.transform.Find("TotalTime").GetComponent<Text>();
         TimerText.text = "Play Time: " + Timer.ToString("#.00") + "s";
     }
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
 
-    private void OnLevelWasLoaded(int level)
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         deathCanvas.gameObject.SetActive(false);
         winCanvas.gameObject.SetActive(false);
         Time.timeScale = 1.0f;
         if (SceneManager.GetActiveScene().name == "DoozyMenu")
-        { 
+        {
             DeathCount = 0;
             Timer = 0.0f;
         }
-
     }
 
 }
