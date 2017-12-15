@@ -16,6 +16,12 @@ public class AIGhost2Door : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Door: " + other.gameObject.name + " " + other.gameObject.tag);
+        if(other.name.Contains("WoodenDoor"))
+        {
+            GameObject doorObject = other.gameObject;
+            DoorController doorController = doorObject.GetComponent<DoorController>();
+            if (!doorController.isOpen && doorController.isInteractable)
+                doorController.toggleDoor();
+        }
     }
 }
