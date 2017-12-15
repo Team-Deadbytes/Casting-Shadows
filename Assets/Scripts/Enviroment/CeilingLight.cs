@@ -47,6 +47,7 @@ public class CeilingLight : MonoBehaviour
     private bool monsterNear;
     private float monsterGracePeriod;
     private float originalIntensity;
+    private CircleCollider2D monsterCollider;
 
 	private ProximityMessage proximityMessage;
 
@@ -73,12 +74,20 @@ public class CeilingLight : MonoBehaviour
 		playersInventory = GameObject.Find("Player").GetComponent<Inventory>();
 		playersSanitySystem = GameObject.Find("Player").transform.Find("Player top light").GetComponent<SanitySystem>();
 
-		timedMessage = GetComponent<TimedMessage>();
+        CircleCollider2D[] allColliders = GetComponentsInChildren<CircleCollider2D>();
+        foreach(CircleCollider2D collider in allColliders)
+        {
+            if (collider.gameObject.name == "MonsterCollider")
+                monsterCollider = collider;
+        }
+
+        timedMessage = GetComponent<TimedMessage>();
 
 		if (StartWithLightBulb)
 			SpawnLightBulb(StartLightBulbLifetime);
+        monsterCollider.enabled = StartWithLightBulb;
 
-		SetProximityMessage();
+        SetProximityMessage();
 
         progressBar = GameObject.Find("/Canvas/ChangeLightProgressBar");
         progressBarImg = progressBar.GetComponent<Image>();
@@ -214,7 +223,9 @@ public class CeilingLight : MonoBehaviour
 		if (playerUnderLight)
 			playersSanitySystem.IncrementSafeZone();
 		SetProximityMessage();
-	}
+        monsterCollider.enabled = true;
+
+    }
 
 	private void SpawnLightBulb(float lifetime)
 	{
@@ -222,7 +233,8 @@ public class CeilingLight : MonoBehaviour
 		if (playerUnderLight)
 			playersSanitySystem.IncrementSafeZone();
 		SetProximityMessage();
-	}
+        monsterCollider.enabled = true;
+    }
 
 	private void RemoveLightBulb()
 	{
@@ -233,7 +245,8 @@ public class CeilingLight : MonoBehaviour
 		}
 		lightBulb = null;
 		SetProximityMessage();
-	}
+        monsterCollider.enabled = false;
+    }
 
 	public void BreakLightBulb()
 	{
@@ -243,7 +256,8 @@ public class CeilingLight : MonoBehaviour
 		if (playerUnderLight)
 			playersSanitySystem.DecrementSafeZone();
 		SetProximityMessage();
-	}
+        monsterCollider.enabled = false;
+    }
 	
 	private void Interact()
 	{

@@ -197,12 +197,15 @@ public class AIPath : AIBase {
 		seeker.StartPath(GetFeetPosition(), targetPosition);
 	}
 
+	public AIGhost2 aiInstance;
+	
 	public virtual void OnTargetReached () {
 		// The end of the path has been reached.
 		// If you want custom logic for when the AI has reached it's destination
 		// add it here.
 		// You can also create a new script which inherits from this one
 		// and override the function in that script
+		aiInstance.pathingDestinationReached();
 	}
 
 	/** Called when a requested path has finished calculation.
