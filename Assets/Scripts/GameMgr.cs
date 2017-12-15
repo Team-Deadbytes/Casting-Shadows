@@ -125,4 +125,8 @@ public class GameMgr : MonoBehaviour
 
     }
 
+    public void RestartScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }
