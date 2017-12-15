@@ -101,4 +101,9 @@ public class GameMgr : MonoBehaviour
         winCanvas.gameObject.SetActive(false);
         Time.timeScale = 1.0f;
     }
+
+    public void RestartScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }
