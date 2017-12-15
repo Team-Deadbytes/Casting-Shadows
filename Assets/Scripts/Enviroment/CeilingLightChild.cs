@@ -8,6 +8,9 @@ public class CeilingLightChild : MonoBehaviour
 
 	[SerializeField]
 	private CeilingLight parent;
+	
+	private bool playerUnderLight;
+	public bool PlayerUnderLight { get { return playerUnderLight; } }
 
 	public void Start()
 	{
@@ -17,6 +20,12 @@ public class CeilingLightChild : MonoBehaviour
 	public bool ShouldFlicker()
 	{
 		return parent.LightBulb.Lifespan <= FlickerThreshold;
+	}
+
+	public void OnTriggerEnter2D(Collider2D other)
+	{
+		if (other.tag == "Player" && !other.isTrigger)
+			playerUnderLight = true;
 	}
 
 	public void OnTriggerStay2D(Collider2D other)
@@ -32,5 +41,11 @@ public class CeilingLightChild : MonoBehaviour
 					parent.Flicker();
 			}
 		}
+	}
+
+	public void OnTriggerExit2D(Collider2D other)
+	{
+		if (other.tag == "Player" && !other.isTrigger)
+			playerUnderLight = false;
 	}
 }

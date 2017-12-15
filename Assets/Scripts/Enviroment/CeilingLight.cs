@@ -52,8 +52,6 @@ public class CeilingLight : MonoBehaviour
 
 	private Inventory playersInventory;
 
-	private bool playerUnderLight;
-
     private GameObject progressBar;
     private Image progressBarImg;
     
@@ -124,12 +122,6 @@ public class CeilingLight : MonoBehaviour
 		isFlickering = false;
 	}
 
-	public void OnTriggerEnter2D(Collider2D other)
-	{
-		if (other.tag == "Player" && !other.isTrigger)
-			playerUnderLight = true;
-	}
-
 	public void OnTriggerStay2D(Collider2D other)
 	{
 		if (other.tag == "Player" && !other.isTrigger)
@@ -159,12 +151,6 @@ public class CeilingLight : MonoBehaviour
 					StopAction();
 			}
 		}
-	}
-
-	public void OnTriggerExit2D(Collider2D other)
-	{
-		if (other.tag == "Player" && !other.isTrigger)
-			playerUnderLight = false;
 	}
 
 	private void StartAction()
@@ -211,7 +197,7 @@ public class CeilingLight : MonoBehaviour
 	private void InsertLightBulb()
 	{
 		lightBulb = playersInventory.RemoveLightBulb();
-		if (playerUnderLight)
+		if (child.PlayerUnderLight)
 			playersSanitySystem.IncrementSafeZone();
 		SetProximityMessage();
 	}
@@ -219,14 +205,14 @@ public class CeilingLight : MonoBehaviour
 	private void SpawnLightBulb(float lifetime)
 	{
 		lightBulb = new LightBulb(lifetime);
-		if (playerUnderLight)
+		if (child.PlayerUnderLight)
 			playersSanitySystem.IncrementSafeZone();
 		SetProximityMessage();
 	}
 
 	private void RemoveLightBulb()
 	{
-		if (playerUnderLight)
+		if (child.PlayerUnderLight)
 		{
 			playersInventory.AddLightBulb(lightBulb);
 			playersSanitySystem.DecrementSafeZone();
@@ -240,7 +226,7 @@ public class CeilingLight : MonoBehaviour
 		audioSource.clip = breakSound;
 		audioSource.Play();
 		lightBulb = null;
-		if (playerUnderLight)
+		if (child.PlayerUnderLight)
 			playersSanitySystem.DecrementSafeZone();
 		SetProximityMessage();
 	}
