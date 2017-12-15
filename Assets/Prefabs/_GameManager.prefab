@@ -620,7 +620,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: The end
+  m_Text: The End
 --- !u!114 &114054014970220150
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -669,7 +669,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ja
+  m_Text: Total Time Text
 --- !u!114 &114087481051276540
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1319,7 +1319,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ja
+  m_Text: Total Time Text
 --- !u!114 &114174788862543906
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1373,7 +1373,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: nee
+  m_Text: DeathCount Text
 --- !u!114 &114195773788908814
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3143,7 +3143,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: nee
+  m_Text: Death Count Text
 --- !u!114 &114879995512842766
 MonoBehaviour:
   m_ObjectHideFlags: 1
