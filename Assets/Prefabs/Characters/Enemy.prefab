@@ -195,7 +195,6 @@ MonoBehaviour:
   chaseSpeed: 1.5
   currTarget: 1
   lastTarget: 0
-  deathCanvas: {fileID: 0}
 --- !u!212 &212731249845403600
 SpriteRenderer:
   m_ObjectHideFlags: 1
