@@ -1507,8 +1507,8 @@ MonoBehaviour:
   OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1465615056}
-        m_MethodName: QuitGame
+      - m_Target: {fileID: 893014676}
+        m_MethodName: GameQuit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1803,18 +1803,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2063676590}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1465615056}
-        m_MethodName: QuitGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &468353249 stripped
@@ -3252,6 +3241,7 @@ GameObject:
   - component: {fileID: 893014673}
   - component: {fileID: 893014672}
   - component: {fileID: 893014671}
+  - component: {fileID: 893014676}
   m_Layer: 0
   m_Name: MasterCanvas
   m_TagString: Untagged
@@ -3350,6 +3340,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &893014676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 893014670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e158d0c72431ee47b09aa6f211090fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1256695314
 GameObject:
   m_ObjectHideFlags: 0
@@ -3550,12 +3551,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d6834c404749f714daca84624c55f3d3, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &1465615056 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114381039102678084, guid: d6834c404749f714daca84624c55f3d3,
-    type: 2}
-  m_PrefabInternal: {fileID: 1465615055}
-  m_Script: {fileID: 11500000, guid: 2309bfd6bdfc5fa4283d89c5baeca571, type: 3}
 --- !u!1 &1652996227
 GameObject:
   m_ObjectHideFlags: 0
