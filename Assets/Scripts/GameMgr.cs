@@ -43,13 +43,13 @@ public class GameMgr : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown("escape") && isPaused == false)
+        if (Input.GetKeyDown("escape") && isPaused == false && SceneManager.GetActiveScene().name != "DoozyMenu")
         {
             PauseMenu.SetActive(true);
             Time.timeScale = 0.0f;
             isPaused = true;
         }
-        else if (Input.GetKeyDown("escape") && isPaused == true)
+        else if (Input.GetKeyDown("escape") && isPaused == true && SceneManager.GetActiveScene().name != "DoozyMenu")
         {
             PauseMenu.SetActive(false);
             Time.timeScale = 1.0f;
