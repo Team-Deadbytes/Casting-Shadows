@@ -6,23 +6,23 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Menu.unity
-    guid: 1693f09696f16c941a1395d63ae8caa0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/DoozyMenu.unity
     guid: a670e20296f5df74ca29f1ddc1fe4938
   - enabled: 1
-    path: Assets/Level1.unity
-    guid: b4ab6734deb36ea45b3ab7a7f4631856
-  - enabled: 1
-    path: Assets/Empty-Level.unity
-    guid: 7e616cd7d204ab54680964d579ddc7d0
-  - enabled: 1
     path: Assets/Intro.unity
     guid: cc137ee65ef8954478904ad5466dd3d1
   - enabled: 1
-    path: Assets/Level1AITest.unity
-    guid: e3cd788c0fee2c04ea907c42a34c6d9e
+    path: Assets/Level1.unity
+    guid: b4ab6734deb36ea45b3ab7a7f4631856
+  - enabled: 0
+    path: Assets/Empty-Level.unity
+    guid: 7e616cd7d204ab54680964d579ddc7d0
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Level2.unity
     guid: 9b06a20672a39a24089bc16970d20c47

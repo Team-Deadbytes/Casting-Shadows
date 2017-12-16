@@ -786,6 +786,117 @@ RectTransform:
   m_AnchoredPosition: {x: 286.5, y: 114.5}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &179841272
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 893014675}
+    m_Modifications:
+    - target: {fileID: 224452174035296166, guid: 394de44be7a556349badd35959acf967,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -49
+      objectReference: {fileID: 0}
+    - target: {fileID: 224452174035296166, guid: 394de44be7a556349badd35959acf967,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -513
+      objectReference: {fileID: 0}
+    - target: {fileID: 224452174035296166, guid: 394de44be7a556349badd35959acf967,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224452174035296166, guid: 394de44be7a556349badd35959acf967,
+        type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224452174035296166, guid: 394de44be7a556349badd35959acf967,
+        type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224452174035296166, guid: 394de44be7a556349badd35959acf967,
+        type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224452174035296166, guid: 394de44be7a556349badd35959acf967,
+        type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224452174035296166, guid: 394de44be7a556349badd35959acf967,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224452174035296166, guid: 394de44be7a556349badd35959acf967,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -49
+      objectReference: {fileID: 0}
+    - target: {fileID: 224452174035296166, guid: 394de44be7a556349badd35959acf967,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -169
+      objectReference: {fileID: 0}
+    - target: {fileID: 224452174035296166, guid: 394de44be7a556349badd35959acf967,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 224452174035296166, guid: 394de44be7a556349badd35959acf967,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 224452174035296166, guid: 394de44be7a556349badd35959acf967,
+        type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224452174035296166, guid: 394de44be7a556349badd35959acf967,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224452174035296166, guid: 394de44be7a556349badd35959acf967,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224452174035296166, guid: 394de44be7a556349badd35959acf967,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224452174035296166, guid: 394de44be7a556349badd35959acf967,
+        type: 2}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224452174035296166, guid: 394de44be7a556349badd35959acf967,
+        type: 2}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 394de44be7a556349badd35959acf967, type: 2}
+  m_IsPrefabParent: 0
+--- !u!224 &179841273 stripped
+RectTransform:
+  m_PrefabParentObject: {fileID: 224452174035296166, guid: 394de44be7a556349badd35959acf967,
+    type: 2}
+  m_PrefabInternal: {fileID: 179841272}
+--- !u!114 &179841274 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114805102017763728, guid: 394de44be7a556349badd35959acf967,
+    type: 2}
+  m_PrefabInternal: {fileID: 179841272}
+  m_Script: {fileID: 11500000, guid: 6b336fd637a083543ab4862aac32be73, type: 3}
 --- !u!1 &269930890
 GameObject:
   m_ObjectHideFlags: 0
@@ -1028,7 +1139,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 402832762}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -145.125, z: 0}
+  m_LocalPosition: {x: 0, y: -258, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2063676589}
@@ -1675,7 +1786,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2063676590}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1465615056}
+        m_MethodName: QuitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &494032799
@@ -1702,7 +1824,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 494032799}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 48.375, z: 0}
+  m_LocalPosition: {x: 0, y: 86, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 269930891}
@@ -2340,17 +2462,18 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &569255252 stripped
+--- !u!114 &569255252
 MonoBehaviour:
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 114805102017763728, guid: 394de44be7a556349badd35959acf967,
     type: 2}
-  m_PrefabInternal: {fileID: 1467408315}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b336fd637a083543ab4862aac32be73, type: 3}
---- !u!224 &569255254 stripped
-RectTransform:
-  m_PrefabParentObject: {fileID: 224452174035296166, guid: 394de44be7a556349badd35959acf967,
-    type: 2}
-  m_PrefabInternal: {fileID: 1467408315}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &686564546
 GameObject:
   m_ObjectHideFlags: 0
@@ -2455,7 +2578,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 690846489}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 145.125, z: 0}
+  m_LocalPosition: {x: 0, y: 258, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1256695315}
@@ -3193,11 +3316,11 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 893014670}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 344, y: 193.5, z: 0}
+  m_LocalPosition: {x: 611.5, y: 344, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 130894962}
-  - {fileID: 569255254}
+  - {fileID: 179841273}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3584,7 +3707,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1656761642}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -48.375, z: 0}
+  m_LocalPosition: {x: 0, y: -86, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1652996228}
@@ -4230,7 +4353,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1652996229}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 179841274}
+        m_MethodName: StartCreditList
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &1664258863
