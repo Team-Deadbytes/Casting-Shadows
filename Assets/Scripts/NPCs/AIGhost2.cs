@@ -21,9 +21,12 @@ public class AIGhost2 : MonoBehaviour
     Vector3 lightAwayDirection;
     float runningAwayTimeout;
 
-    // These variables are to monitor whether the player is stuck
+    // These variables are to monitor whether the AI is stuck
     private float distanceTravelled, timeSpentTravelling;
     private Vector3 lastPos;
+
+    // Closing the distance after pathing is complete
+    private bool deadReckoning;
 
     private Vector3 newTarget()
     {
@@ -43,8 +46,11 @@ public class AIGhost2 : MonoBehaviour
     {
         if(pathing.target == player.transform)
         {
-            player.GetComponent<PlayerController>().Die();
-            GameMgr.Die();
+            /*pathing.target = target.transform;
+            target.transform.position = newTarget();
+            pathing.speed = patrolSpeed; */
+            pathing.enabled = false;
+            deadReckoning = true;
         } else
         {
             StartCoroutine(Wait());
@@ -107,6 +113,7 @@ public class AIGhost2 : MonoBehaviour
         timeSpentTravelling = 0.0f;
         runningFromLight = false;
         runningAwayTimeout = float.PositiveInfinity;
+        deadReckoning = false;
     }
 
     // Update is called once per frame
@@ -129,7 +136,17 @@ public class AIGhost2 : MonoBehaviour
                     pathing.speed = patrolSpeed;
                 }
             }
+        } else if(deadReckoning)
+        {
+            float step = chaseSpeed * Time.deltaTime;
+            self.transform.position = Vector3.MoveTowards(self.transform.position, player.transform.position, step);
         }
+    }
+
+    public void onTriggerKillEnter(Collider2D other)
+    {
+        player.GetComponent<PlayerController>().Die();
+        GameMgr.Die();
     }
 
     public void onTriggerEnterPlayer(Collider2D other)
@@ -146,6 +163,8 @@ public class AIGhost2 : MonoBehaviour
         //Debug.Log("Player exit: " + other.name + " " + other.tag);
         if (runningFromLight)
             return;
+        deadReckoning = false;
+        pathing.enabled = true;
         pathing.target = target.transform;
         pathing.speed = patrolSpeed;
     }
@@ -153,6 +172,8 @@ public class AIGhost2 : MonoBehaviour
     public void onTriggerEnterLight(Collider2D other)
     {
         //Debug.Log("Light Enter: " + other.name + " " + other.tag);
+        deadReckoning = false;
+        pathing.enabled = true;
         runningFromLight = true;
         CeilingLight lightsystem = other.GetComponentInParent<CeilingLight>();
         lightsystem.MonsterProwing(true);
