@@ -9,3 +9,22 @@ Vertical wooden floor with hole by Tuomo Untinen
 * Assets/Sprites/Environment/marble-floor.png
 https://opengameart.org (License: CC-BY-SA)
 Stone floor floor by Tuomo Untinen
+
+* Assets/Audio/Sounds/fsounds.org/walk01.wav
+https://freesound.org/people/punpcklbw/sounds/195014/ (License: CC BY 3.0)
+
+* Assets/Audio\Sounds/fsounds.org/hand-bells-reverse-cluster.wav
+https://freesound.org/people/punpcklbw/sounds/195014/ (License: CC BY 3.0)
+
+* Assets/Audio/Sounds/fsounds.org/death-blood-splatter.mp3
+Source: https://freesound.org/people/minian89/sounds/195954/ (License: CC0 1.0)
+
+* Assets/Audio/Sounds/WesternDemoAudioAssets/Doors/PatioSqueak1.wav
+* Assets/Audio/Sounds/WesternDemoAudioAssets/Doors/PatioSqueak2.wav
+Source: https://www.assetstore.unity3d.com/en/#!/content/67788 (License: Unity-EULA)
+
+* Assets/Audio/Sounds/scary-crying-sound-effect-1-mien.wav
+Source: https://freesound.org/people/reasanka/sounds/347911/ (License: CC0 1.0 Universal (CC0 1.0))
+
+
+
