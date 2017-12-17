@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 82337320054597164}
   - component: {fileID: 114411665815165524}
   - component: {fileID: 50523020097543340}
+  - component: {fileID: 114862868509595352}
   m_Layer: 12
   m_Name: WoodenDoor
   m_TagString: Objects
@@ -238,8 +239,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOpen: 0
   isInteractable: 1
+  isLocked: 0
   openSound: {fileID: 8300000, guid: c21fa22da4c9241d3aa1bd50e667b77d, type: 3}
   closeSound: {fileID: 8300000, guid: f35311d9f54424b50bfae30761aa9cdc, type: 3}
+--- !u!114 &114862868509595352
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1438896587645580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f5b98315f805f4c88227082e25a5a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Message: The door is locked
+  FontSize: 0
+  VerticalPosition: 0
+  Duration: 0
 --- !u!212 &212805039493070512
 SpriteRenderer:
   m_ObjectHideFlags: 1

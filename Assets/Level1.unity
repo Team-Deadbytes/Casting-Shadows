@@ -2523,7 +2523,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 167896303}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -221.1, y: -79.8, z: 0}
+  m_LocalPosition: {x: -417.09998, y: -96.3, z: 0}
   m_LocalScale: {x: 0.77306503, y: 1.3961545, z: 0.7730649}
   m_Children: []
   m_Father: {fileID: 1732866710}
@@ -3590,26 +3590,6 @@ Transform:
   m_Father: {fileID: 2024437937}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &269673034 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1438896587645580, guid: 2bee1fbd2a174f7478c7d13ddb046aea,
-    type: 2}
-  m_PrefabInternal: {fileID: 1638577724}
---- !u!114 &269673041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 269673034}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8d79ec85d2c3104b97d0ce2b0278bbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Message: The door is locked
-  TypeEffect: 1
-  height: 0
-  FontSize: 24
 --- !u!1001 &269903074
 Prefab:
   m_ObjectHideFlags: 0
@@ -5080,7 +5060,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 380274865}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.005004883, y: 152.35999, z: 0}
+  m_LocalPosition: {x: -0.005004883, y: 168.85999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1732866710}
@@ -20510,12 +20490,17 @@ Prefab:
     - target: {fileID: 114539904569806172, guid: 2bee1fbd2a174f7478c7d13ddb046aea,
         type: 2}
       propertyPath: isInteractable
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 82337320054597164, guid: 2bee1fbd2a174f7478c7d13ddb046aea,
         type: 2}
       propertyPath: spreadCustomCurve.m_RotationOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114539904569806172, guid: 2bee1fbd2a174f7478c7d13ddb046aea,
+        type: 2}
+      propertyPath: isLocked
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2bee1fbd2a174f7478c7d13ddb046aea, type: 2}
@@ -21703,7 +21688,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1732866706}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 315.5, y: 177.5, z: 0}
+  m_LocalPosition: {x: 511.5, y: 194, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1342132427}
@@ -25996,7 +25981,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2043744803}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -272.5, y: -77.9, z: 0}
+  m_LocalPosition: {x: -468.5, y: -94.399994, z: 0}
   m_LocalScale: {x: 0.5544902, y: 0.55449027, z: 0.55449027}
   m_Children: []
   m_Father: {fileID: 1732866710}
@@ -26891,7 +26876,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2138008884}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -272.3, y: -68.4, z: 0}
+  m_LocalPosition: {x: -468.3, y: -84.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1732866710}

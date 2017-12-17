@@ -117,7 +117,6 @@ public class DrawerController : MonoBehaviour
             stringBuilder.Append("You found " + LightBulbCount + " light bulb");
             if (LightBulbCount > 1)
                 stringBuilder.Append("s");
-            stringBuilder.Append(".");
             timedMessage.Message = stringBuilder.ToString();
             timedMessage.Show();
             for (int i = 0; i < LightBulbCount; i++)
@@ -126,7 +125,7 @@ public class DrawerController : MonoBehaviour
         }
         else
         {
-            timedMessage.Message = "There is nothing in these drawers.";
+            timedMessage.Message = "There is nothing in these drawers";
             timedMessage.Show();
         }
     }
