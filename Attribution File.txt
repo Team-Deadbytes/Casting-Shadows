@@ -1,0 +1,11 @@
+* Assets/Sprites/Environment/floor.png
+https://opengameart.org (License: CC-BY-SA)
+Vertical wooden floor by Tuomo Untinen
+
+* Assets/Sprites/Environment/floor-broken.png
+https://opengameart.org (License: CC-BY-SA)
+Vertical wooden floor with hole by Tuomo Untinen
+
+* Assets/Sprites/Environment/marble-floor.png
+https://opengameart.org (License: CC-BY-SA)
+Stone floor floor by Tuomo Untinen
