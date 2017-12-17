@@ -14,12 +14,19 @@ public class DoorController : MonoBehaviour
 	public AudioClip closeSound;
 	private AudioSource audioSource;
 	private ProximityMessage proximityMessage;
+	private bool playerNearDoor;
 
 	public void Start()
 	{
 		audioSource = GetComponent<AudioSource>();
 		proximityMessage = GetComponent<ProximityMessage>();
 		setProximityMessage();		
+	}
+
+	public void Update()
+	{
+		if (playerNearDoor && isInteractable && Input.GetKeyDown(KeyCode.E))
+			toggleDoor();
 	}
 
 	private void setProximityMessage()
@@ -29,12 +36,16 @@ public class DoorController : MonoBehaviour
 			: string.Empty;
 	}
 
-	public void OnTriggerStay2D(Collider2D other)
+	public void OnTriggerEnter2D(Collider2D other)
 	{
-		if (isInteractable)
-			if (other.tag == "Player" && other.isTrigger == false)
-				if (Input.GetKeyDown(KeyCode.E))
-					toggleDoor();
+		if (other.tag == "Player" && other.isTrigger == false)
+			playerNearDoor = true;
+	}
+
+	public void OnTriggerExit2D(Collider2D other)
+	{
+		if (other.tag == "Player" && other.isTrigger == false)
+			playerNearDoor = false;
 	}
 
 	public void toggleDoor()
