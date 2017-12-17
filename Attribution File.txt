@@ -26,5 +26,8 @@ Source: https://www.assetstore.unity3d.com/en/#!/content/67788 (License: Unity-E
 * Assets/Audio/Sounds/scary-crying-sound-effect-1-mien.wav
 Source: https://freesound.org/people/reasanka/sounds/347911/ (License: CC0 1.0 Universal (CC0 1.0))
 
+* Assets/AstarPathfindingProject
+Source: https://arongranberg.com/astar/ using the free version. (License: Unity-EULA)
+
 
 
