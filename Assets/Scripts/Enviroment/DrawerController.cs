@@ -24,27 +24,27 @@ public class DrawerController : MonoBehaviour
 
     private TimedMessage timedMessage;
 
+    private bool playerNearDrawer;
+
+    private GameObject player;
+
     void Start ()
     {
         progressBar = GameObject.Find("/Canvas/ChangeLightProgressBar");
         animator = GetComponent<Animator>();
         progressBarImg = progressBar.GetComponent<Image>();
         timedMessage = GetComponent<TimedMessage>();
+        player = GameObject.Find("Player");
+        playersInventory = player.GetComponent<Inventory>();
     }
 
-    public void OnTriggerEnter2D(Collider2D other)
+    public void Update()
     {
-        if (other.tag == "Player" && playersInventory == null)
-            playersInventory = other.GetComponent<Inventory>();
-    }
-
-    public void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.tag == "Player" && !other.isTrigger)
+        if (playerNearDrawer)
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                playerPosition = other.transform.position;
+                playerPosition = player.transform.position;
                 StartAction();
             }
 
@@ -56,7 +56,7 @@ public class DrawerController : MonoBehaviour
                     animator.SetTrigger("StopOpening");
                 }
                 
-                if (playerPosition == other.transform.position)
+                if (playerPosition == player.transform.position)
                     ProgressAction();
                 else
                 {
@@ -65,6 +65,18 @@ public class DrawerController : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Player" && !other.isTrigger)
+            playerNearDrawer = true;
+    }
+    
+    public void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.tag == "Player" && !other.isTrigger)
+            playerNearDrawer = false;
     }
 
     private void StartAction()
