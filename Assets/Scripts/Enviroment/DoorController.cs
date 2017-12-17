@@ -9,24 +9,32 @@ public class DoorController : MonoBehaviour
 
 	public bool isOpen;
 	public bool isInteractable;
+	public bool isLocked;
+	private bool playerNearDoor;
 
 	public AudioClip openSound;
 	public AudioClip closeSound;
 	private AudioSource audioSource;
 	private ProximityMessage proximityMessage;
-	private bool playerNearDoor;
+	private TimedMessage timedMessage;
 
 	public void Start()
 	{
 		audioSource = GetComponent<AudioSource>();
 		proximityMessage = GetComponent<ProximityMessage>();
+		timedMessage = GetComponent<TimedMessage>();
 		setProximityMessage();		
 	}
 
 	public void Update()
 	{
 		if (playerNearDoor && isInteractable && Input.GetKeyDown(KeyCode.E))
-			toggleDoor();
+		{
+			if (!isLocked)
+				toggleDoor();
+			else
+				timedMessage.Show();
+		}
 	}
 
 	private void setProximityMessage()
@@ -50,13 +58,16 @@ public class DoorController : MonoBehaviour
 
 	public void toggleDoor()
 	{
-		float rotationAngle = isOpen ? -90.0f : 90.0f;
-		transform.Rotate(0.0f, 0.0f, rotationAngle);
-		isOpen = !isOpen;
+		if (!isLocked)
+		{
+			float rotationAngle = isOpen ? -90.0f : 90.0f;
+			transform.Rotate(0.0f, 0.0f, rotationAngle);
+			isOpen = !isOpen;
 
-		audioSource.clip = isOpen ? openSound : closeSound;
-		audioSource.Play();
+			audioSource.clip = isOpen ? openSound : closeSound;
+			audioSource.Play();
 
-		setProximityMessage();
+			setProximityMessage();
+		}
 	}
 }
