@@ -60,6 +60,10 @@ public class CeilingLight : MonoBehaviour
 
 	private TimedMessage timedMessage;
 
+	private bool playerNear;
+
+	private GameObject player;
+
 	public void Start()
 	{
 		audioSource = GetComponent<AudioSource>();
@@ -69,8 +73,9 @@ public class CeilingLight : MonoBehaviour
         monsterNear = false;
         originalIntensity = lightComponent.intensity;
 		child = transform.GetComponentInChildren<CeilingLightChild>();
-		playersInventory = GameObject.Find("Player").GetComponent<Inventory>();
-		playersSanitySystem = GameObject.Find("Player").transform.Find("Player top light").GetComponent<SanitySystem>();
+		player = GameObject.Find("Player");
+		playersInventory = player.GetComponent<Inventory>();
+		playersSanitySystem = player.transform.Find("Player top light").GetComponent<SanitySystem>();
 
         CircleCollider2D[] allColliders = GetComponentsInChildren<CircleCollider2D>();
         foreach(CircleCollider2D collider in allColliders)
@@ -96,6 +101,34 @@ public class CeilingLight : MonoBehaviour
     {
 		if (!IsFlickering)
 			lightComponent.enabled = LightIsOn;
+
+		if (playerNear)
+		{
+			if (Input.GetKeyDown(KeyCode.E))
+			{
+				if (lightBulb == null && playersInventory.LightBulbs.Count <= 0)
+				{
+					timedMessage.Message = "I don't have any light bulbs.";
+					timedMessage.Show();
+				}
+				else
+				{
+					playerPosition = player.transform.position;
+					StartAction();
+				}
+			}
+			
+			if (Input.GetKeyUp(KeyCode.E))
+				StopAction();
+
+            if (interacting)
+			{
+				if (playerPosition == player.transform.position)
+					ProgressAction();
+				else
+					StopAction();
+			}
+		}
 
         if ((monsterNear || monsterGracePeriod > 0.0f) && lightComponent.isActiveAndEnabled && lightComponent.intensity > 0.0f)
         {
@@ -131,35 +164,16 @@ public class CeilingLight : MonoBehaviour
 		isFlickering = false;
 	}
 
-	public void OnTriggerStay2D(Collider2D other)
+	public void OnTriggerEnter2D(Collider2D other)
 	{
 		if (other.tag == "Player" && !other.isTrigger)
-		{
-			if (Input.GetKeyDown(KeyCode.E))
-			{
-				if (lightBulb == null && playersInventory.LightBulbs.Count <= 0)
-				{
-					timedMessage.Message = "I don't have any light bulbs.";
-					timedMessage.Show();
-				}
-				else
-				{
-					playerPosition = other.transform.position;
-					StartAction();
-				}
-			}
-			
-			if (Input.GetKeyUp(KeyCode.E))
-				StopAction();
+			playerNear = true;		
+	}
 
-            if (interacting)
-			{
-				if (playerPosition == other.transform.position)
-					ProgressAction();
-				else
-					StopAction();
-			}
-		}
+	public void OnTriggerExit2D(Collider2D other)
+	{
+		if (other.tag == "Player" && !other.isTrigger)
+			playerNear = false;		
 	}
 
 	private void StartAction()
